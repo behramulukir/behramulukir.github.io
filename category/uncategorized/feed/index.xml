@@ -8,10 +8,10 @@
 	>
 
 <channel>
-	<title>Uncategorized &#8211; Behram Ulukir</title>
+	<title>Uncategorized &#8211; Behram Ulukır</title>
 	<atom:link href="/category/uncategorized/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
-	<description>Behram Ulukir - Personal Website</description>
+	<description></description>
 	<lastBuildDate>Tue, 11 Jun 2024 21:47:35 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
@@ -22,7 +22,7 @@
 	<item>
 		<title>Hello world!</title>
 		<link>/hello-world/</link>
-					<comments>/hello-world/#comments</comments>
+					<comments>/hello-world/#respond</comments>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Tue, 11 Jun 2024 21:47:35 +0000</pubDate>
@@ -35,7 +35,7 @@
 ]]></content:encoded>
 					
 					<wfw:commentRss>/hello-world/feed/</wfw:commentRss>
-			<slash:comments>1</slash:comments>
+			<slash:comments>0</slash:comments>
 		
 		
 			</item>
