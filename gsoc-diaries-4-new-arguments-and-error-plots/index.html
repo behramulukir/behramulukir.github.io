@@ -5,10 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="max-image-preview:large">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
-	<title>GSoC Diaries #2: Starting with Dot Plots &#8211; Behram Ulukır</title>
+	<title>GSoC Diaries #4: New Arguments and Error Plots &#8211; Behram Ulukır</title>
 <link rel="alternate" type="application/rss+xml" title="Behram Ulukır &raquo; Feed" href="/feed/">
 <link rel="alternate" type="application/rss+xml" title="Behram Ulukır &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="Behram Ulukır &raquo; GSoC Diaries #2: Starting with Dot Plots Comments Feed" href="/gsoc-diaries-2-quantile-dot-plots/feed/">
+<link rel="alternate" type="application/rss+xml" title="Behram Ulukır &raquo; GSoC Diaries #4: New Arguments and Error Plots Comments Feed" href="/gsoc-diaries-4-new-arguments-and-error-plots/feed/">
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.1"}};
 /*! This file is auto-generated */
@@ -22,7 +22,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <style id="wp-block-post-date-inline-css">.wp-block-post-date{box-sizing:border-box}</style>
 <style id="wp-block-post-featured-image-inline-css">.wp-block-post-featured-image{margin-left:0;margin-right:0}.wp-block-post-featured-image a{display:block;height:100%}.wp-block-post-featured-image :where(img){box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom;width:100%}.wp-block-post-featured-image.alignfull img,.wp-block-post-featured-image.alignwide img{width:100%}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim{background-color:#000;inset:0;position:absolute}.wp-block-post-featured-image{position:relative}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-gradient{background-color:initial}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-0{opacity:0}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-10{opacity:.1}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-20{opacity:.2}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-30{opacity:.3}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-40{opacity:.4}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-50{opacity:.5}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-60{opacity:.6}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-70{opacity:.7}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-80{opacity:.8}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-90{opacity:.9}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-100{opacity:1}.wp-block-post-featured-image:where(.alignleft,.alignright){width:100%}</style>
 <style id="wp-block-paragraph-inline-css">.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}</style>
-<style id="wp-block-list-inline-css">ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}</style>
+<style id="wp-block-footnotes-inline-css">.editor-styles-wrapper,.entry-content{counter-reset:footnotes}a[data-fn].fn{counter-increment:footnotes;display:inline-flex;font-size:smaller;text-decoration:none;text-indent:-9999999px;vertical-align:super}a[data-fn].fn:after{content:"[" counter(footnotes) "]";float:left;text-indent:0}</style>
 <style id="wp-block-post-content-inline-css">.wp-block-post-content{display:flow-root}</style>
 <style id="wp-block-post-terms-inline-css">.wp-block-post-terms{box-sizing:border-box}.wp-block-post-terms .wp-block-post-terms__separator{white-space:pre-wrap}</style>
 <style id="wp-block-post-navigation-link-inline-css">.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous{display:inline-block;margin-right:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next{display:inline-block;margin-left:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link.has-text-align-left[style*="writing-mode: vertical-lr"],.wp-block-post-navigation-link.has-text-align-right[style*="writing-mode: vertical-rl"]{rotate:180deg}</style>
@@ -106,13 +106,13 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 	}
 }</style>
 <link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/697">
+<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/725">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 6.8.1">
-<link rel="canonical" href="/gsoc-diaries-2-quantile-dot-plots/">
-<link rel="shortlink" href="/?p=697">
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fgsoc-diaries-2-quantile-dot-plots%2F">
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fgsoc-diaries-2-quantile-dot-plots%2F#038;format=xml">
+<link rel="canonical" href="/gsoc-diaries-4-new-arguments-and-error-plots/">
+<link rel="shortlink" href="/?p=725">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fgsoc-diaries-4-new-arguments-and-error-plots%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fgsoc-diaries-4-new-arguments-and-error-plots%2F#038;format=xml">
 <script type="importmap" id="wp-importmap">{"imports":{"@wordpress\/interactivity":"\/wp-includes\/js\/dist\/script-modules\/interactivity\/index.min.js?ver=55aebb6e0a16726baffb"}}</script>
 <script type="module" src="/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js?ver=61572d447d60c0aa5240" id="@wordpress/block-library/navigation/view-js-module"></script>
 <link rel="modulepreload" href="/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=55aebb6e0a16726baffb" id="@wordpress/interactivity-js-modulepreload">
@@ -122,7 +122,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 @font-face{font-family:"STIX Two Text";font-style:normal;font-weight:100 900;font-display:fallback;src:url('/wp-content/themes/beaumont/assets/fonts/stix-two-text/STIXTwoText-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}</style>
 </head>
 
-<body class="wp-singular post-template post-template-post-g-so-c-diaries-2-quantile-dot-plots single single-post postid-697 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-beaumont">
+<body class="wp-singular post-template post-template-post-g-so-c-diaries-3-first-pr single single-post postid-725 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-beaumont">
 
 <div class="wp-site-blocks">
 <header class="site-header wp-block-template-part">
@@ -153,13 +153,13 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <main class="wp-block-group is-layout-flow wp-container-core-group-is-layout-777886d4 wp-block-group-is-layout-flow" style="margin-top:0px;margin-bottom:0px">
 <div class="wp-block-group alignwide has-global-padding is-layout-constrained wp-container-core-group-is-layout-a62636b3 wp-block-group-is-layout-constrained">
 <div class="wp-block-group alignwide is-layout-flow wp-container-core-group-is-layout-9a402448 wp-block-group-is-layout-flow">
-<h1 class="has-text-align-center wp-block-post-title">GSoC Diaries #2: Starting with Dot Plots</h1>
+<h1 class="has-text-align-center wp-block-post-title">GSoC Diaries #4: New Arguments and Error Plots</h1>
 
-<div style="font-style:normal;font-weight:700;" class="has-text-align-center wp-block-post-date has-text-color has-primary-color has-heading-1-font-size"><time datetime="2025-06-14T22:20:12+03:00">June 14, 2025</time></div>
+<div style="font-style:normal;font-weight:700;" class="has-text-align-center wp-block-post-date has-text-color has-primary-color has-heading-1-font-size"><time datetime="2025-07-12T00:32:17+03:00">July 12, 2025</time></div>
 </div>
 
 
-<figure style="width:300px;height:214px; margin-top:56px;" class="alignwide wp-block-post-featured-image"><img width="504" height="360" src="/wp-content/uploads/2025/06/dotplot-1.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" style="height:214px;object-fit:cover;" decoding="async" fetchpriority="high" srcset="/wp-content/uploads/2025/06/dotplot-1.png 504w, /wp-content/uploads/2025/06/dotplot-1-300x214.png 300w" sizes="(max-width: 504px) 100vw, 504px"></figure>
+<figure style="width:300px;height:300px; margin-top:56px;" class="alignwide wp-block-post-featured-image"><img width="1200" height="1200" src="/wp-content/uploads/2025/07/ppc_error_x.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" style="height:300px;object-fit:cover;" decoding="async" fetchpriority="high" srcset="/wp-content/uploads/2025/07/ppc_error_x.png 1200w, /wp-content/uploads/2025/07/ppc_error_x-300x300.png 300w, /wp-content/uploads/2025/07/ppc_error_x-1024x1024.png 1024w, /wp-content/uploads/2025/07/ppc_error_x-150x150.png 150w, /wp-content/uploads/2025/07/ppc_error_x-768x768.png 768w" sizes="(max-width: 1200px) 100vw, 1200px"></figure>
 </div>
 
 
@@ -170,45 +170,27 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 
 
 
-<p>It has been two weeks since I wrote the previous journal entry which was aimed to conclude the community bonding period and start the coding period. The coding period has been underway since the beginning of this month and I wanted to give a update about my progress so far, as I promised.</p>
+<p>In the <a href="/gsoc-diaries-3-first-pr/">last blog post</a>, I talked about quantile dot plots and doing my first official PR on the repository. Since then, that PR required a few updates and took me couple of more days to finalise. One of my favourite things about GSoC is how much I learn about software development that I wouldn&#8217;t learn if it wasn&#8217;t an open source focused programme. For example, a small but very important thing I missed while doing my first PR was compiling the documentation. I thought writing up the documentation would be enough but apparently, I needed to compile it explix citly so that it actually shows up on the website. After getting feedbacks from my mentors to fix such little mistakes, I managed to finish up the PR and since it has been merged to main branch, waiting to be included in the next release of the package. Congratulations to myself, I guess!</p>
 
 
 
-<p>I&#8217;ll start by confessing one thing: the coding period has started fairly slowly for me. Unfortunately, my final exams -which I had 3 of them- was spanning from June 2 to June 6, pretty much blocking my chances to do any significant coding for that week. Don&#8217;t get me wrong though, I have done stuff. We already had a GitHub project as our project management tab and I spent my free time looking at the task items there, organising and editing them.</p>
+<p>As there are lots of things to implement as part of my project, I quickly started working on my next task. This time, I wanted to focus on another part of bayesplot error/residual plots. In their paper, Säilynoja et al<sup data-fn="1563a730-319b-48df-83c9-488f658649bf" class="fn"><a href="#1563a730-319b-48df-83c9-488f658649bf" id="1563a730-319b-48df-83c9-488f658649bf-link">1</a></sup> highlighted the importance of residual plots that are robust in visualising both continuous and discrete data. So far, error plots in bayesplot are geared towards handling continuous data which created a need for changes. </p>
 
 
 
-<p>Things took off more on the second week, though. When I got freed from the school work, I had so much time to dedicate to Google Summer of Code which I happily did. We had an initial meeting to discuss which task item I should start working on and decided that quantile dot plots are the best option as we anticipated that it should be rather similar in implementation compared to other graphing options we have, such as histograms or density plots. To implement this, I had two options to choose from:</p>
+<p>There have been already talks about error plots and whether we need alternative approaches for them, so I created <a href="https://github.com/stan-dev/bayesplot/issues/358" data-type="link" data-id="https://github.com/stan-dev/bayesplot/issues/358">a new issue</a> to discuss those things, gathering two important tasks to implement: first, adding an optional <em>x</em> argument to <em>ppc_error_binned</em> function and second, implementing a new plot -possibly- named <em>ppc_residual</em> which would plot <em>y &#8211; stat(y_rep)</em> on the y-axis and <em>stat(y_rep)</em> on the x-axis. Currently, <em>ppc_error_*</em> functions are plotting stat(<em>y &#8211; y_rep)</em> on the y-axis and <em>stat(y_rep)</em> on the x-axis. Our discussion led us to think that implementing the second task requires detailed thinking, especially regarding how we want to structure the package. For example, it is an imporant question whether we want to create a new family of functions for <em>ppc_residual_*</em> or include them to <em>ppc_error_*</em> family. Since we haven&#8217;t settled on this discussion, I decided to start working on something that I can implement right away: adding an optional <em>x</em> argument to <em>ppc_error_binned</em> function.</p>
 
 
 
-<ul class="wp-block-list">
-<li>ggplot2::geom_dotplot()</li>
+<p>To be honest, this task has been fairly easier than implementing a whole new function from scratch. As there are already helper functions to use, the task for me is just to change handful of lines, update the documentation, and implement new tests to make sure new abilities of the function works as intended. Though, the most important part of this task was not breaking anything because in a package that has quite a lot of users, the last thing you would want is messing up with functions that people might be utilising in production code.</p>
 
 
 
-<li>ggdist:stat_dots()</li>
-</ul>
+<p>With a quick implementation phase, I managed to finish up the changes that were needed an created a <a href="https://github.com/stan-dev/bayesplot/pull/359" data-type="link" data-id="https://github.com/stan-dev/bayesplot/pull/359">new PR</a> for them. This new code is passing all the tests, not breaking any existing code, and implementing the changes we needed just as described. Hopefully, this PR will quickly make its way to the main branch. I am quite happy with ramping up my shipping speed and I hope to keep this up. I still haven&#8217;t settled on what should I implement next but let&#8217;s keep it as a mystery for the next diary entry!</p>
 
 
-
-<p>Just by looking at those functions, it was clear that <em>ggdist::stat_dots()</em>  is simply the superior function when it comes to ploting dots on cartesian axes since it was giving the option to plot only certain quantiles of the data. Even though it was dependent on the <em>ggplot::geom_dotplot()</em>, it has some very remarkable upgrades and few extra customisation opportunities over the bare <em>ggplot::geom_dotplot()</em> function, which was the second option.</p>
-
-
-
-<p>However, software development is never just about picking the most advanced method. If the more basic method is enough for the purposes of the project, then it&#8217;s likely to be a better fit since advanced capabilities often comes with extra maintanance tasks. Therefore, I decided to examine both of the functions well enough and made my decision in an informed way.</p>
-
-
-
-<p>This is not the only thing we discussed in the meeting, of course. We also discussed a lot about the testing of newly implemented functions. Testing functions that returns visual objects are slightly different then functions that return easily comparable items. For that reason, bayesplot has testing approach that saves the image files and compares them to see what are the changes from the previous version of the function to the next version. Bayesplot doesn&#8217;t employ a strict test-driven development, however, it was among the topics that we discussed about. We also agreed about some practicalities and made sure how we want to run things moving forward, such as me being responsible for calling the meetings when I need them and Teemu being the first responsible for the project.</p>
-
-
-
-<p>The first two weeks wasn&#8217;t as productive as I would have wished due to school and exams, however, I am happy with progress I have done especially in the last week. In the next two weeks, my goal is to dedicate most my time in implementing dot plot function with proper testing and documentation.</p>
-
-
-
-<p>See you in the next entry of GSoC diaries!</p>
+<ol class="wp-block-footnotes"><li id="1563a730-319b-48df-83c9-488f658649bf">Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a href="https://arxiv.org/abs/2503.01509">https://arxiv.org/abs/2503.01509</a> <a href="#1563a730-319b-48df-83c9-488f658649bf-link" aria-label="Jump to footnote reference 1">↩︎</a>
+</li></ol>
 </div>
 
 
@@ -223,7 +205,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 
 
 <div class="taxonomy-post_tag wp-block-post-terms">
-<a href="/tag/bayesplot/" rel="tag">Bayesplot</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/dot-plot/" rel="tag">dot plot</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/ggdist/" rel="tag">ggdist</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/ggplot2/" rel="tag">ggplot2</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/google-summer-of-code/" rel="tag">Google Summer of Code</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/stan/" rel="tag">Stan</a>
+<a href="/tag/bayesplot/" rel="tag">Bayesplot</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/covariate/" rel="tag">covariate</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/error-plot/" rel="tag">error plot</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/ggplot2/" rel="tag">ggplot2</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/google-summer-of-code/" rel="tag">Google Summer of Code</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/residual-plot/" rel="tag">residual plot</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/stan/" rel="tag">Stan</a>
 </div>
 </div>
 </div>
@@ -232,9 +214,9 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 
 
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><nav class="alignwide is-style-beaumont-vertical-separators wp-block-query-pagination is-vertical is-content-justification-space-between is-layout-flex wp-container-core-query-pagination-is-layout-2f00920f wp-block-query-pagination-is-layout-flex" aria-label="Pagination">
-<div style="font-style:normal;" class="post-navigation-link-previous wp-block-post-navigation-link"><a href="/gsoc-diaries-1-introduction/" rel="prev">GSoC Diaries #1: Introduction</a></div>
+<div style="font-style:normal;" class="post-navigation-link-previous wp-block-post-navigation-link"><a href="/gsoc-diaries-3-first-pr/" rel="prev">GSoC Diaries #3: First PR</a></div>
 
-<div style="font-style:normal;" class="post-navigation-link-next wp-block-post-navigation-link"><a href="/gsoc-diaries-3-first-pr/" rel="next">GSoC Diaries #3: First PR</a></div>
+<div style="font-style:normal;" class="post-navigation-link-next wp-block-post-navigation-link"></div>
 </nav></div>
 </main>
 
