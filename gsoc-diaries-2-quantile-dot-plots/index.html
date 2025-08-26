@@ -194,19 +194,15 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 
 <div class="wp-block-group is-layout-flow wp-container-core-group-is-layout-4e3604a6 wp-block-group-is-layout-flow" style="margin-top:65px"><div style="border-style:none;border-width:0px; padding-top:0;padding-bottom:0;padding-left:15%;padding-right:15%; min-height:0px;" class="entry-content wp-block-post-content is-layout-flow wp-container-core-post-content-is-layout-4125e2a6 wp-block-post-content-is-layout-flow">
-<p>Hey,</p>
+<p>Hey,<br>It has been two weeks since I wrote the previous journal entry, which was aimed at concluding the community bonding period and starting the coding period. The coding period has been underway since the beginning of this month, and I wanted to give an update about my progress so far, as I promised.</p>
 
 
 
-<p>It has been two weeks since I wrote the previous journal entry which was aimed to conclude the community bonding period and start the coding period. The coding period has been underway since the beginning of this month and I wanted to give a update about my progress so far, as I promised.</p>
+<p>I&rsquo;ll start by confessing one thing: the coding period has started fairly slowly for me. Unfortunately, my final exams -which I had 3 of them- spanned from June 2 to June 6, pretty much blocking my chances to do any significant coding for that week. Don&rsquo;t get me wrong, though, I have done stuff. We already had a GitHub project as our project management tab, and I spent my free time looking at the task items there, organising and editing them.</p>
 
 
 
-<p>I&rsquo;ll start by confessing one thing: the coding period has started fairly slowly for me. Unfortunately, my final exams -which I had 3 of them- was spanning from June 2 to June 6, pretty much blocking my chances to do any significant coding for that week. Don&rsquo;t get me wrong though, I have done stuff. We already had a GitHub project as our project management tab and I spent my free time looking at the task items there, organising and editing them.</p>
-
-
-
-<p>Things took off more on the second week, though. When I got freed from the school work, I had so much time to dedicate to Google Summer of Code which I happily did. We had an initial meeting to discuss which task item I should start working on and decided that quantile dot plots are the best option as we anticipated that it should be rather similar in implementation compared to other graphing options we have, such as histograms or density plots. To implement this, I had two options to choose from:</p>
+<p>Things took off more in the second week, though. When I got freed from the school work, I had so much time to dedicate to Google Summer of Code, which I happily did. We had an initial meeting to discuss which task item I should start working on, and decided that quantile dot plots are the best option, as we anticipated that they should be rather similar in implementation compared to other graphing options we have, such as histograms or density plots. To implement this, I had two options to choose from:</p>
 
 
 
@@ -220,19 +216,19 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 
 
-<p>Just by looking at those functions, it was clear that <em>ggdist::stat_dots()</em>  is simply the superior function when it comes to ploting dots on cartesian axes since it was giving the option to plot only certain quantiles of the data. Even though it was dependent on the <em>ggplot::geom_dotplot()</em>, it has some very remarkable upgrades and few extra customisation opportunities over the bare <em>ggplot::geom_dotplot()</em> function, which was the second option.</p>
+<p>Just by looking at those functions, it was clear that <em>ggdist::stat_dots()</em> is simply the superior function when it comes to plotting dots on Cartesian axes, since it gives the option to plot only certain quantiles of the data. Even though it was dependent on the <em>ggplot::geom_dotplot()</em>, it has some very remarkable upgrades and a few extra customisation opportunities over the bare <em>ggplot::geom_dotplot()</em> function, which was the second option.</p>
 
 
 
-<p>However, software development is never just about picking the most advanced method. If the more basic method is enough for the purposes of the project, then it&rsquo;s likely to be a better fit since advanced capabilities often comes with extra maintanance tasks. Therefore, I decided to examine both of the functions well enough and made my decision in an informed way.</p>
+<p>However, software development is never just about picking the most advanced method. If the more basic method is enough for the purposes of the project, then it&rsquo;s likely to be a better fit since advanced capabilities often come with extra maintenance tasks. Therefore, I decided to examine both of the functions well enough and made my decision in an informed way.</p>
 
 
 
-<p>This is not the only thing we discussed in the meeting, of course. We also discussed a lot about the testing of newly implemented functions. Testing functions that returns visual objects are slightly different then functions that return easily comparable items. For that reason, bayesplot has testing approach that saves the image files and compares them to see what are the changes from the previous version of the function to the next version. Bayesplot doesn&rsquo;t employ a strict test-driven development, however, it was among the topics that we discussed about. We also agreed about some practicalities and made sure how we want to run things moving forward, such as me being responsible for calling the meetings when I need them and Teemu being the first responsible for the project.</p>
+<p>This is not the only thing we discussed in the meeting, of course. We also discussed a lot about the testing of newly implemented functions. Testing functions that return visual objects is slightly different from testing functions that return easily comparable items. For that reason, bayesplot has a testing approach that saves the image files and compares them to see what the changes are from the previous version of the function to the next version. Bayesplot doesn&rsquo;t employ a strict test-driven development; however, it was among the topics that we discussed. We also agreed about some practicalities and made sure how we want to run things moving forward, such as me being responsible for calling the meetings when I need them and Teemu being the first responsible for the project.</p>
 
 
 
-<p>The first two weeks wasn&rsquo;t as productive as I would have wished due to school and exams, however, I am happy with progress I have done especially in the last week. In the next two weeks, my goal is to dedicate most my time in implementing dot plot function with proper testing and documentation.</p>
+<p>The first two weeks weren&rsquo;t as productive as I would have wished due to school and exams; however, I am happy with the progress I have made, especially in the last week. In the next two weeks, my goal is to dedicate most of my time to implementing the dot plot function with proper testing and documentation.</p>
 
 
 
