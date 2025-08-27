@@ -5,19 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="max-image-preview:large">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
-	<title>GSoC Diaries #3: First PR &ndash; Behram Uluk&#305;r</title>
-<link rel="alternate" type="application/rss+xml" title="Behram Uluk&#305;r &raquo; Feed" href="/feed/">
-<link rel="alternate" type="application/rss+xml" title="Behram Uluk&#305;r &raquo; Comments Feed" href="/comments/feed/">
-<link rel="alternate" type="application/rss+xml" title="Behram Uluk&#305;r &raquo; GSoC Diaries #3: First PR Comments Feed" href="/gsoc-diaries-3-first-pr/feed/">
-<script>
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.2"}};
-/*! This file is auto-generated */
-!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
-</script>
+	<title>GSoC Diaries #3: First PR – Behram Ulukır</title>
+
+
+
 <style id="wp-block-navigation-link-inline-css">
 .wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word}.wp-block-navigation .wp-block-navigation-item__description{display:none}.link-ui-tools{border-top:1px solid #f0f0f0;padding:8px}.link-ui-block-inserter{padding-top:8px}.link-ui-block-inserter__back{margin-left:8px;text-transform:uppercase}
 </style>
-<link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.8.2" media="all">
+<link rel="stylesheet" id="wp-block-navigation-css" href="https://behramulukir.github.io/wp-includes/blocks/navigation/style.min.css" media="all">
 <style id="wp-block-site-title-inline-css">
 .wp-block-site-title{box-sizing:border-box}.wp-block-site-title :where(a){color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
 </style>
@@ -47,20 +42,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 </style>
 <style id="wp-block-query-pagination-inline-css">
 .wp-block-query-pagination.is-content-justification-space-between>.wp-block-query-pagination-next:last-of-type{margin-inline-start:auto}.wp-block-query-pagination.is-content-justification-space-between>.wp-block-query-pagination-previous:first-child{margin-inline-end:auto}.wp-block-query-pagination .wp-block-query-pagination-previous-arrow{display:inline-block;margin-right:1ch}.wp-block-query-pagination .wp-block-query-pagination-previous-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-query-pagination .wp-block-query-pagination-next-arrow{display:inline-block;margin-left:1ch}.wp-block-query-pagination .wp-block-query-pagination-next-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-query-pagination.aligncenter{justify-content:center}
-</style>
-<style id="wp-emoji-styles-inline-css">
-
-	img.wp-smiley, img.emoji {
-		display: inline !important;
-		border: none !important;
-		box-shadow: none !important;
-		height: 1em !important;
-		width: 1em !important;
-		margin: 0 0.07em !important;
-		vertical-align: -0.1em !important;
-		background: none !important;
-		padding: 0 !important;
-	}
 </style>
 <style id="wp-block-library-inline-css">
 :root{--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,161;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px;--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color)}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
@@ -118,7 +99,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 			z-index: 100000;
 		}
 </style>
-<link rel="stylesheet" id="beaumont-styles-css" href="/wp-content/themes/beaumont/style.css?ver=0.2.5" media="all">
+<link rel="stylesheet" id="beaumont-styles-css" href="https://behramulukir.github.io/wp-content/themes/beaumont/style.css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="https://behramulukir.github.io/wp-content/plugins/wp-pagenavi/pagenavi-css.css" media="all">
 <style id="block-visibility-screen-size-styles-inline-css">
 /* Large screens (desktops, 992px and up) */
 @media ( min-width: 992px ) {
@@ -141,21 +123,21 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 	}
 }
 </style>
-<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/717"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.8.2">
-<link rel="canonical" href="/gsoc-diaries-3-first-pr/">
-<link rel="shortlink" href="/?p=717">
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fgsoc-diaries-3-first-pr%2F">
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fgsoc-diaries-3-first-pr%2F&amp;format=xml">
+
+
+
+
+
+
 <script type="importmap" id="wp-importmap">
-{"imports":{"@wordpress\/interactivity":"\/wp-includes\/js\/dist\/script-modules\/interactivity\/index.min.js?ver=55aebb6e0a16726baffb"}}
+{"imports":{"@wordpress\/interactivity":"https:\/\/behramulukir.github.io\/wp-includes\/js\/dist\/script-modules\/interactivity\/index.min.js?ver=55aebb6e0a16726baffb"}}
 </script>
-<script type="module" src="/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js?ver=61572d447d60c0aa5240" id="@wordpress/block-library/navigation/view-js-module"></script>
-<link rel="modulepreload" href="/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=55aebb6e0a16726baffb" id="@wordpress/interactivity-js-modulepreload"><style class="wp-fonts-local">
-@font-face{font-family:"Albert Sans";font-style:italic;font-weight:100 900;font-display:fallback;src:url('/wp-content/themes/beaumont/assets/fonts/albert-sans/AlbertSans-Italic-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
-@font-face{font-family:"Albert Sans";font-style:normal;font-weight:100 900;font-display:fallback;src:url('/wp-content/themes/beaumont/assets/fonts/albert-sans/AlbertSans-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
-@font-face{font-family:"STIX Two Text";font-style:italic;font-weight:100 900;font-display:fallback;src:url('/wp-content/themes/beaumont/assets/fonts/stix-two-text/STIXTwoText-Italic-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
-@font-face{font-family:"STIX Two Text";font-style:normal;font-weight:100 900;font-display:fallback;src:url('/wp-content/themes/beaumont/assets/fonts/stix-two-text/STIXTwoText-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
+<script type="module" src="https://behramulukir.github.io/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js" id="@wordpress/block-library/navigation/view-js-module"></script>
+<link rel="modulepreload" href="https://behramulukir.github.io/wp-includes/js/dist/script-modules/interactivity/index.min.js" id="@wordpress/interactivity-js-modulepreload"><style class="wp-fonts-local">
+@font-face{font-family:"Albert Sans";font-style:italic;font-weight:100 900;font-display:fallback;src:url('https://behramulukir.github.io/wp-content/themes/beaumont/assets/fonts/albert-sans/AlbertSans-Italic-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"Albert Sans";font-style:normal;font-weight:100 900;font-display:fallback;src:url('https://behramulukir.github.io/wp-content/themes/beaumont/assets/fonts/albert-sans/AlbertSans-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"STIX Two Text";font-style:italic;font-weight:100 900;font-display:fallback;src:url('https://behramulukir.github.io/wp-content/themes/beaumont/assets/fonts/stix-two-text/STIXTwoText-Italic-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"STIX Two Text";font-style:normal;font-weight:100 900;font-display:fallback;src:url('https://behramulukir.github.io/wp-content/themes/beaumont/assets/fonts/stix-two-text/STIXTwoText-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
 </style>
 </head>
 
@@ -175,7 +157,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 					</div>
 				</div></nav>
 
-<h1 style="font-style:normal;font-weight:700;" class="has-link-color wp-elements-64f06cefa222ed28fe860a2daefde5a6 wp-block-site-title has-text-color has-contrast-color has-heading-1-font-size"><a href="/" target="_self" rel="home">Behram Uluk&#305;r</a></h1></div>
+<h1 style="font-style:normal;font-weight:700;" class="has-link-color wp-elements-64f06cefa222ed28fe860a2daefde5a6 wp-block-site-title has-text-color has-contrast-color has-heading-1-font-size"><a href="https://behramulukir.github.io" target="_self" rel="home">Behram Ulukır</a></h1></div>
 </div>
 </header>
 
@@ -187,7 +169,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <div style="font-style:normal;font-weight:700;" class="has-text-align-center wp-block-post-date has-text-color has-primary-color has-heading-1-font-size"><time datetime="2025-06-28T15:28:47+03:00">June 28, 2025</time></div></div>
 
 
-<figure style="width:300px;height:300px; margin-top:56px;" class="alignwide wp-block-post-featured-image"><img width="800" height="800" src="/wp-content/uploads/2025/06/pr.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" style="height:300px;object-fit:cover;" decoding="async" fetchpriority="high" srcset="/wp-content/uploads/2025/06/pr.png 800w, /wp-content/uploads/2025/06/pr-300x300.png 300w, /wp-content/uploads/2025/06/pr-150x150.png 150w, /wp-content/uploads/2025/06/pr-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"></figure></div>
+<figure style="width:300px;height:300px; margin-top:56px;" class="alignwide wp-block-post-featured-image"><img width="800" height="800" src="https://behramulukir.github.io/wp-content/uploads/2025/06/pr.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" style="height:300px;object-fit:cover;" decoding="async" fetchpriority="high" srcset="https://behramulukir.github.io/wp-content/uploads/2025/06/pr.png 800w,https://behramulukir.github.io/wp-content/uploads/2025/06/pr-300x300.png 300w,https://behramulukir.github.io/wp-content/uploads/2025/06/pr-150x150.png 150w,https://behramulukir.github.io/wp-content/uploads/2025/06/pr-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"></figure></div>
 
 
 
@@ -196,15 +178,15 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 
 
 
-<p>In the <a target="_blank" href="/gsoc-diaries-2-quantile-dot-plots/" rel="noreferrer noopener">last blog post</a>, I mentioned that I have been working on the dot plots. You know what, it was much more complicated than I anticipated. If you remember, I told you that there are two options to use under-the-hood while implementing dot plots for bayesplot, <em>geom_dotplot</em> and <em>stat_dots</em>. While the former one offers a simple solution for the feature that I was trying to implement, the latter one has more advanced capabilities at the expense of adding new dependencies to the package. I didn&rsquo;t want that. I was confident that I would be able to implement what <em>stat_dots</em> offers by tweaking <em>geom_dotplot</em>. A fault confessed is half redressed. After spending a significant amount of time implementing auto-sizing dots and stack ratio of dot plots by finding the number of the tallest line, I realised that I would need more work than just tweaking the <em>geom_dotplot</em>. I would need to implement a whole new <em>geom</em> and simply build what <em>stat_dots</em> offers from scratch. After consulting with Jonah, Aki, and Teemu, I have decided that using <em>stat_dots</em> is the better way to go.</p>
+<p>In the <a target="_blank" href="/gsoc-diaries-2-quantile-dot-plots/" rel="noreferrer noopener">last blog post</a>, I mentioned that I have been working on the dot plots. You know what, it was much more complicated than I anticipated. If you remember, I told you that there are two options to use under-the-hood while implementing dot plots for bayesplot, <em>geom_dotplot</em> and <em>stat_dots</em>. While the former one offers a simple solution for the feature that I was trying to implement, the latter one has more advanced capabilities at the expense of adding new dependencies to the package. I didn’t want that. I was confident that I would be able to implement what <em>stat_dots</em> offers by tweaking <em>geom_dotplot</em>. A fault confessed is half redressed. After spending a significant amount of time implementing auto-sizing dots and stack ratio of dot plots by finding the number of the tallest line, I realised that I would need more work than just tweaking the <em>geom_dotplot</em>. I would need to implement a whole new <em>geom</em> and simply build what <em>stat_dots</em> offers from scratch. After consulting with Jonah, Aki, and Teemu, I have decided that using <em>stat_dots</em> is the better way to go.</p>
 
 
 
-<p>We didn&rsquo;t want to hard-introduce <em>ggdist</em> and instead, we added it as a suggested dependency to the package. On top of that, we added a check to the newly implemented <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em> to see whether <em>ggdist</em> is implemented or not. The rest was relatively straightforward. By following similar functions that were already implemented, such as <em>ppc_hist</em>, I built <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em>. They simply are functions that take inputs of Bayesian methods, format them nicely and turn them into graphs by passing them to the<em> stat_dots</em> function.</p>
+<p>We didn’t want to hard-introduce <em>ggdist</em> and instead, we added it as a suggested dependency to the package. On top of that, we added a check to the newly implemented <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em> to see whether <em>ggdist</em> is implemented or not. The rest was relatively straightforward. By following similar functions that were already implemented, such as <em>ppc_hist</em>, I built <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em>. They simply are functions that take inputs of Bayesian methods, format them nicely and turn them into graphs by passing them to the<em> stat_dots</em> function.</p>
 
 
 
-<p>However, there is more to open-source software development than just implementing the functions. It needs to have detailed documentation as well as a sensible testing structure. I started with documentation simply because it was easier to do. Since bayesplot uses <em>roxygen</em> to create its documentation, I had to follow a certain structure while creating documentation. By following the existing documentation, I explained the new functions in detail and also created an example to showcase how it works. I also created tests for new functions. Bayesplot utilises the <em>testthat</em> library to build unit tests and has two main types of tests: the first one is to test that functions return correct types for different argument combinations, and the second type is to test whether the outputs of functions have changed since the last time that tests are run. To the second one, graphs are saved as SVG files, and they are compared with the outputs of the next test run. The only issue with this structure is that sometimes SVG files change without any visible change to graphics, which leads to false negatives. To implement these tests for <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em>, I have followed the existing examples. The only addition I had was wrapping some of the test functions with <em>expect_warning</em>. This was because sometimes when dots don&rsquo;t fit the graph, <em>stat_dots</em> throws an error, which is not subject to our unit tests and can be ignored in this context. While doing that, I have allowed those unit tests to ignore those warning messages.</p>
+<p>However, there is more to open-source software development than just implementing the functions. It needs to have detailed documentation as well as a sensible testing structure. I started with documentation simply because it was easier to do. Since bayesplot uses <em>roxygen</em> to create its documentation, I had to follow a certain structure while creating documentation. By following the existing documentation, I explained the new functions in detail and also created an example to showcase how it works. I also created tests for new functions. Bayesplot utilises the <em>testthat</em> library to build unit tests and has two main types of tests: the first one is to test that functions return correct types for different argument combinations, and the second type is to test whether the outputs of functions have changed since the last time that tests are run. To the second one, graphs are saved as SVG files, and they are compared with the outputs of the next test run. The only issue with this structure is that sometimes SVG files change without any visible change to graphics, which leads to false negatives. To implement these tests for <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em>, I have followed the existing examples. The only addition I had was wrapping some of the test functions with <em>expect_warning</em>. This was because sometimes when dots don’t fit the graph, <em>stat_dots</em> throws an error, which is not subject to our unit tests and can be ignored in this context. While doing that, I have allowed those unit tests to ignore those warning messages.</p>
 
 
 
@@ -218,19 +200,19 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <p>In</p>
 
 
-<div class="taxonomy-category wp-block-post-terms"><a href="/category/gsoc-diaries/" rel="tag">GSoC Diaries</a></div></div>
+<div class="taxonomy-category wp-block-post-terms"><a href="https://behramulukir.github.io/category/gsoc-diaries/" rel="tag">GSoC Diaries</a></div></div>
 
 
-<div class="taxonomy-post_tag wp-block-post-terms"><a href="/tag/bayesplot/" rel="tag">Bayesplot</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/dot-plot/" rel="tag">dot plot</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/ggdist/" rel="tag">ggdist</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/ggplot2/" rel="tag">ggplot2</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/github/" rel="tag">GitHub</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/google-summer-of-code/" rel="tag">Google Summer of Code</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/pr/" rel="tag">PR</a><span class="wp-block-post-terms__separator">, </span><a href="/tag/stan/" rel="tag">Stan</a></div></div>
+<div class="taxonomy-post_tag wp-block-post-terms"><a href="https://behramulukir.github.io/tag/bayesplot/" rel="tag">Bayesplot</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/dot-plot/" rel="tag">dot plot</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/ggdist/" rel="tag">ggdist</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/ggplot2/" rel="tag">ggplot2</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/github/" rel="tag">GitHub</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/google-summer-of-code/" rel="tag">Google Summer of Code</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/pr/" rel="tag">PR</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/stan/" rel="tag">Stan</a></div></div>
 </div>
 </div>
 
 
 
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><nav class="alignwide is-style-beaumont-vertical-separators wp-block-query-pagination is-vertical is-content-justification-space-between is-layout-flex wp-container-core-query-pagination-is-layout-2f00920f wp-block-query-pagination-is-layout-flex" aria-label="Pagination">
-<div style="font-style:normal;" class="post-navigation-link-previous wp-block-post-navigation-link"><a href="/gsoc-diaries-2-quantile-dot-plots/" rel="prev">GSoC Diaries #2: Starting with Dot Plots</a></div>
+<div style="font-style:normal;" class="post-navigation-link-previous wp-block-post-navigation-link"><a href="https://behramulukir.github.io/gsoc-diaries-2-quantile-dot-plots/" rel="prev">GSoC Diaries #2: Starting with Dot Plots</a></div>
 
-<div style="font-style:normal;" class="post-navigation-link-next wp-block-post-navigation-link"><a href="/gsoc-diaries-4-new-arguments-and-error-plots/" rel="next">GSoC Diaries #4: New Arguments and Error Plots</a></div>
+<div style="font-style:normal;" class="post-navigation-link-next wp-block-post-navigation-link"><a href="https://behramulukir.github.io/gsoc-diaries-4-new-arguments-and-error-plots/" rel="next">GSoC Diaries #4: New Arguments and Error Plots</a></div>
 </nav></div>
 </main>
 
@@ -238,11 +220,11 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <footer class="site-footer wp-block-template-part">
 <div class="wp-block-group alignfull has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:0px;padding-top:var(--wp--preset--spacing--40)">
 <div class="wp-block-group alignwide is-content-justification-center is-layout-flex wp-container-core-group-is-layout-24a9dfa4 wp-block-group-is-layout-flex" style="margin-top:0px">
-<p class="has-text-align-center">&copy; 2025</p>
+<p class="has-text-align-center">© 2025</p>
 
 
 
-<p class="theme-credit has-primary-color has-text-color"><a href="https://andersnoren.se/"><br></a></p>
+<p class="theme-credit has-primary-color has-text-color"><a href="https://andersnoren.se"><br></a></p>
 </div>
 </div>
 </footer></div>

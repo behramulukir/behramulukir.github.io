@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>GitHub &#8211; Behram Ulukır</title>
+	<atom:link href="https://behramulukir.github.io/tag/github/feed/" rel="self" type="application/rss+xml" />
+	<link>http://behramulukir.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 26 Aug 2025 11:07:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.2</generator>
+	<item>
+		<title>GSoC Diaries #7: Code Refactoring</title>
+		<link>https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/</link>
+					<comments>https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 26 Aug 2025 10:42:48 +0000</pubDate>
+				<category><![CDATA[GSoC Diaries]]></category>
+		<category><![CDATA[Bayesplot]]></category>
+		<category><![CDATA[error plot]]></category>
+		<category><![CDATA[ggplot2]]></category>
+		<category><![CDATA[GitHub]]></category>
+		<category><![CDATA[Google Summer of Code]]></category>
+		<category><![CDATA[PR]]></category>
+		<category><![CDATA[refactoring]]></category>
+		<category><![CDATA[rootogram]]></category>
+		<category><![CDATA[Stan]]></category>
+		<guid isPermaLink="false">https://behramulukir.github.io/?p=748</guid>
+
+					<description><![CDATA[Hey, Sometimes you make some plans; however, life has some other plans. I believe that code refactoring is a canonical event for every developer and for every software package. Sometimes it is a complete overhaul, and sometimes it is just about rewriting a single function, like I did over the last two weeks. Just as [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hey,</p>
+
+
+
+<p>Sometimes you make some plans; however, life has some other plans. I believe that code refactoring is a canonical event for every developer and for every software package. Sometimes it is a complete overhaul, and sometimes it is just about rewriting a single function, like I did over the last two weeks. Just as I thought I am done with adding the new <em>discrete</em> style to <em>ppc_rootogram</em>, I was -reasonably- told that code I wrote is fairly messy and would be much easier to maintain if I refactor it, split it into two different functions and move data processing to this newly created internal function and change the logic of how visuals are drawn based on the arguments that user passed to the function. It made complete sense, to be honest. I am not going to be around all the time, and if the functionality that I added would create extra problems in the future, that&#8217;s a big issue. Therefore, I got to work and started refactoring the <em>ppc_rootogram</em>, effectively writing it from the ground up.</p>
+
+
+
+<p>The issue with <em>ppc_rootogram</em> is that it has three different visual styles that the user can choose from: standing, hanging, suspended, and discrete. Out of these styles, the first three are fairly similar to each other. They use the same visual elements, such as histograms, lines, and filled areas, while the discrete one uses points and point ranges. They also have different shades of the chosen colour used to indicate different things, as well as different labelling and even different values on the y-axis. Especially having different values on the y-axis meant the data preparation for the discrete style is different from that for other styles. In standing, hanging, suspended styles, on the y-axis, the values are plotted with equal intervals, on a square-root scale. On the other hand, discrete style y-axis values are plotted with squared intervals on a square root scale. What I did at the end of the day was create an internal helper function named <em>.ppc_rootogram_data</em> to prepare the different data matrices needed for each style accordingly. This function is placed at the end of the <em>ppc-discrete</em> file and not exported, so it cannot be called by external users. Then, this function is called at the beginning of the <em>ppc_rootogram</em> rootogram to get the correct data matrix. After that, I created an if statement to create different geoms based on the style preference of the user. Then those geoms and other stylistic elements are combined in the final if statement that adds and manipulates the visuality of the graph according to the style that is being followed. This refactoring process made the code much more readable, and it got easier to maintain. It&#8217;ll also be easier to deprecate old styles or add new styles in the future. After doing some final bug fixing, the PR got approval from two reviewers, Teemu and Jonah, and I merged it into the main branch. This also marks the first merge action that I did on bayesplot! You know what, it felt good. I felt like a little kid who is let to play with big brother&#8217;s more complex toys. You can see that work <a target="_blank" href="https://github.com/stan-dev/bayesplot/pull/362" rel="noreferrer noopener">here</a>.</p>
+
+
+
+<p>This was not all I did, I am glad to say. I also did some maintenance work. For a long time, it bothered me that there are two different functions, <em>ppc_scatter_error_avg</em> and <em>ppc_scatter_error_avg_vs_x</em>. These functions were doing pretty much the same work, except that the latter had an <em>x</em> argument, which is then plotted on the x-axis, moving the error values to the y-axis. Like I said in the <a target="_blank" href="/gsoc-diaries-6-new-rootogram-style/" rel="noreferrer noopener">last blog post</a>, I was planning to combine these functions, so I went ahead and did that. It was simply checking if anything was passed to the optional <em>x</em> argument, and if yes, doing a few checks and passing it correctly to the helper function, which is doing the actual plotting. This didn&#8217;t take me long to implement; however, I am happy that I ticked another box and moved another task on my project board to <em>the done</em> tab. You can see that work <a target="_blank" href="https://github.com/stan-dev/bayesplot/pull/367" rel="noreferrer noopener">here</a>.</p>
+
+
+
+<p>Next week is the final week of Google Summer of Code, so there are only a handful of things that I plan to do. First, I hope to complete the implementation of <em>ppc_residual_scatter</em>. It initially seemed quite complicated to me, but after discussing it with Teemu, we realised that there should be a relatively straightforward way to implement this. If I still have time after doing this, I&#8217;ll pick up some tasks from the open issues and implement them. I also need to write my final report and do my final submission to Google. See you sooner next time!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>GSoC Diaries #6: New Rootogram Style</title>
+		<link>https://behramulukir.github.io/gsoc-diaries-6-new-rootogram-style/</link>
+					<comments>https://behramulukir.github.io/gsoc-diaries-6-new-rootogram-style/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 11 Aug 2025 17:13:00 +0000</pubDate>
+				<category><![CDATA[GSoC Diaries]]></category>
+		<category><![CDATA[Bayesplot]]></category>
+		<category><![CDATA[ggplot2]]></category>
+		<category><![CDATA[GitHub]]></category>
+		<category><![CDATA[Google Summer of Code]]></category>
+		<category><![CDATA[PR]]></category>
+		<category><![CDATA[rootogram]]></category>
+		<category><![CDATA[Stan]]></category>
+		<guid isPermaLink="false">https://behramulukir.github.io/?p=742</guid>
+
+					<description><![CDATA[Hey, In my last blog post, I talked about rootograms and the new rootogram style that is proposed by Säilynoja et al. This new rootogram style puts more emphasis on the discrete nature of count data compared to other rootogram styles. It does this by using discrete visual elements such as point ranges and points [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hey,</p>
+
+
+
+<p>In my <a href="https://behramulukir.github.io/?page_id=745" target="_blank" rel="noreferrer noopener">last blog post</a>, I talked about rootograms and the new rootogram style that is proposed by Säilynoja et al<sup data-fn="4ddca5b5-4230-4374-bfe7-4677c12fd70f" class="fn"><a href="#4ddca5b5-4230-4374-bfe7-4677c12fd70f" id="4ddca5b5-4230-4374-bfe7-4677c12fd70f-link">1</a></sup>. This new rootogram style puts more emphasis on the discrete nature of count data compared to other rootogram styles. It does this by using discrete visual elements such as point ranges and points instead of lines and filled areas. It also visually looks good and is very compatible with the general plot style followed in bayesplot. In the past two weeks, I have managed to take this idea to a complete implementation and finalised my PR about it, as I promised myself in the last blog post: <a href="https://github.com/stan-dev/bayesplot/pull/362" target="_blank" rel="noreferrer noopener">adding a discrete option to ppc_rootogram</a>.</p>
+
+
+
+<p>The last two weeks were very hectic for me, mainly due to my personal life but also partly because this discrete rootogram required more in-depth thinking than I anticipated. To begin with, I had to travel to Turkey for a couple of days for an Australian visa application, which unfortunately cannot be filled out in Finland, mostly because Finnish people are not required to get a visa to travel to Australia. That made me travel to Turkey for a visa appointment that took only an hour or so. Since I didn&#8217;t want to stop working, I tried to work on my way there, at the airport, while staying at my family&#8217;s house, and so on. Naturally, these weren&#8217;t the most efficient and productive working hours. I am not even mentioning the very deep pain that I had in my right leg that made me unable to sleep, which is now getting better after I had a doctor&#8217;s appointment, received exercise instructions to follow and some medication to take. As a combined result of all these things, I wasn&#8217;t very productive, but I am glad that I managed to complete rootograms and made them ready to be merged to the main branch.</p>
+
+
+
+<p>Like I said, the hectic part was mostly about my personal life, but it was also partly related to the rootograms. It turned out that to correctly add a discrete style to a rootogram, there were lots of minor things I needed to consider. For example, in the version proposed in the articles, Teemu opted to use colours as indicators of whether observations lay within the bounds of posterior samples. This is a good idea, which looks nice visually, but it is not compatible with bayesplot. In bayesplot, users are free to pick from colour schemes whose different shades are used to colour different visual elements of the plot. That made having two completely different colours for such a distinction impossible. I also didn&#8217;t consider different shades of the same colour to be easy enough to tell apart from each other to be used in such a context. Therefore, we decided to move on with using different shapes as our indicators. Then came the question of which shapes to use. After long discussions, I settled on using squares for within bounds and rhombuses for out-of-bounds points. That being said, I also implemented a new argument called <em>bound_distinct</em>, which is set to true by default and used to control whether the user wants such an indication of within/out of bound points based on the <a target="_blank" href="https://github.com/stan-dev/bayesplot/pull/362#issuecomment-3143677841" rel="noreferrer noopener">suggestion of Osvaldo A. Martin</a>. When <em>bound_distinct</em> is set to false, all observation points are visualised by squares. This was not the only point of discussion, though. Like I said, in bayesplot, users pick a colour scheme which is then used to colour the plot accordingly. However, it is not always crystal clear how to assign different shades to different parts of the plot. In other rootogram styles, lighter shades are used for observed points while darker shades are used for sampled points. This convention, in my opinion, didn&#8217;t make much sense to follow in a discrete style since it is harder to distinguish lighter points laid on top of darker lines. In addition to that, in <em>ppc_interval</em>, which uses point ranges, lighter shades are used for sampled points and darker shades are used for observed points. After a bit of discussion, we decided that this is the logical way to consider the visuality of both options, as well as the fact that we are considering deprecating other rootogram styles after some time, therefore it&#8217;s not very sensible to follow their colouring convention. The final part of our discussions was whether to use the median or the mean to determine the centre point of the sampled points. In other rootogram styles, the mean is used to determine the centre, while bounds are based on the quantiles. However, this turned out to be a problematic choice in the context of a discrete style. As we have a style that visualises points discretely and distinguishes whether they lie within bounds or not, we had cases where the observed point is at 0, which is the same as the upper and lower quantiles, but the mean is at 0.04. This meant that the observed point was marked to be within the bounds despite the fact that there weren&#8217;t any visual bounds, and the observed point wasn&#8217;t on top of the centre point either. It also meant that the centre of our sampled points was out of the bounds, which didn&#8217;t make much sense either. Based on these, we decided to use the median to determine centre points. However, we didn&#8217;t touch other rootogram styles, and in the documentation and labels of plots, we made it clear that this design choice only applies to the discrete style.</p>
+
+
+
+<p>There were lots of discussions and lots of design decisions to be taken; however, finally, the discrete rootograms are ready to be used! My work in the last two weeks, though, wasn&#8217;t limited to this. I did a bit of admin work that we discussed before to create a master issue to gather all simple, easy-to-fix issues that can be implemented by people who are new to bayesplot and open source development, which would serve as a soft entry to the world of bayesplot. Under this master issue, I gathered various small sub-issues that newcomers might want to have a look at and pick one to do their first PR: <a target="_blank" href="https://github.com/stan-dev/bayesplot/issues/365" rel="noreferrer noopener">Good First Issues for New Contributors</a>.</p>
+
+
+
+<p>In the upcoming weeks, I want to focus more on residual plots. My first goal is to combine <em>ppc_scatter_error_avg</em> and <em>ppc_scatter_error_avg_vs_x</em> to reduce the number of highly similar functions. Then, I plan to move on to the implementation of long-waiting <em>ppc_residual_scatter</em>. If I have time after doing all this, I&#8217;ll probably move on to clean up some of the old issues and do some quick PRs. It has been a hectic two weeks; I wish the next two would be at least a little bit calmer. See you in the next blog post!</p>
+
+
+<ol class="wp-block-footnotes"><li id="4ddca5b5-4230-4374-bfe7-4677c12fd70f"><meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a href="https://arxiv.org/abs/2503.01509">https://arxiv.org/abs/2503.01509</a> <a href="#4ddca5b5-4230-4374-bfe7-4677c12fd70f-link" aria-label="Jump to footnote reference 1"><img src="https://s.w.org/images/core/emoji/16.0.1/72x72/21a9.png" alt="↩" class="wp-smiley" style="height: 1em; max-height: 1em;" />︎</a></li></ol>]]></content:encoded>
+					
+					<wfw:commentRss>https://behramulukir.github.io/gsoc-diaries-6-new-rootogram-style/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>GSoC Diaries #5: A Week Off and Some Planning</title>
+		<link>https://behramulukir.github.io/gsoc-diaries-5-a-week-off-and-some-planning/</link>
+					<comments>https://behramulukir.github.io/gsoc-diaries-5-a-week-off-and-some-planning/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 26 Jul 2025 13:49:11 +0000</pubDate>
+				<category><![CDATA[GSoC Diaries]]></category>
+		<category><![CDATA[Bayesplot]]></category>
+		<category><![CDATA[error plot]]></category>
+		<category><![CDATA[GitHub]]></category>
+		<category><![CDATA[Google Summer of Code]]></category>
+		<category><![CDATA[PR]]></category>
+		<category><![CDATA[rootogram]]></category>
+		<category><![CDATA[Stan]]></category>
+		<guid isPermaLink="false">https://behramulukir.github.io/?p=734</guid>
+
+					<description><![CDATA[Hey, In the last blog post, I talked about the idea of working on residual plots and error plots and my decision to tackle the issue of the lack of an x argument as an optional covariate in the ppc_error_binned function to quickly implement something. The implementation wasn&#8217;t very complicated, and I quickly created a [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hey,</p>
+
+
+
+<p>In the <a target="_blank" href="/gsoc-diaries-4-new-arguments-and-error-plots/" rel="noreferrer noopener">last blog post</a>, I talked about the idea of working on residual plots and error plots and my decision to tackle the issue of the lack of an x argument as an optional covariate in the<em> ppc_error_binned</em> function to quickly implement something. The implementation wasn&#8217;t very complicated, and I quickly created a PR about it, which was then merged to the master branch after a small update from one of my mentors and the maintainer of the bayesplot package, Jonah. Apparently, I forgot that there was a new way that we were using to label the x-axis, which I didn&#8217;t follow, so he updated the code to follow the same way, and it was good to go. Honestly, it felt so good that there wasn&#8217;t much work needed on that PR, especially because I was planning to take a week off to travel in the Nordics with my family and some of their friends. As a result of my spending a week wandering around Copenhagen -which I absolutely loved- and Stockholm -which I didn&#8217;t really like that much- I knew I wouldn&#8217;t be able to push any new code, so that PR about <em>ppc_error_binned</em> going through smoothly upped my mood quite a bit.</p>
+
+
+
+<p>Getting back to work last Monday after a week off, I wasn&#8217;t sure of what to do next. As I said before, second part of working with residual plots that I mentioned on <a target="_blank" href="https://github.com/stan-dev/bayesplot/issues/358" rel="noreferrer noopener">my issue</a>, implementing a new plot -possibly- named <em>ppc_residual</em> which would plot <em>y – stat(y_rep)</em> on the y-axis and <em>stat(y_rep)</em> on the x-axis, required careful thinking and planning about how do we want to structure error plots and residual plots so that they make the most sense to users. As this was not something that I could decide on my own, I decided to call a meeting with my mentors Jonah, Aki, and Teemu to discuss this, and then we settled on Thursday as the meeting date.</p>
+
+
+
+<p>Since I didn&#8217;t want to sit and do nothing in the meantime, I decided to pick up another task that we put on our GitHub project and turned it into an issue: <a href="https://github.com/stan-dev/bayesplot/issues/360" target="_blank" rel="noreferrer noopener">Emphasising discreteness of data in rootograms</a>. This was something that Säilynoja et al<sup data-fn="6999679c-4d69-499b-96cd-3800b4e85c5b" class="fn"><a href="#6999679c-4d69-499b-96cd-3800b4e85c5b" id="6999679c-4d69-499b-96cd-3800b4e85c5b-link">1</a></sup> proposed in <a href="https://teemusailynoja.github.io/visual-predictive-checks/" target="_blank" rel="noreferrer noopener">their preprint</a>, which simply meant adding an alternative look to rootograms so that their discreteness is more explicit than they are at the moment. This, in my opinion, was a fair point to raise because rootograms are designed to visualise discrete data points, while the visual items in rootograms were continuous, such as lines and fields that normally represent continuity. As this issue is separate from the residual plot discussions, it seemed like a nice new avenue for me to pursue while we are deciding on the fate of residual and error plots. Unfortunately, though, it appeared to be more complicated than I thought. Adding a completely new aesthetic option to an existing graph, especially one that is a little complicated, like the proposed rootogram, takes some time to get right. I made some progress; however, at the moment, it is not good enough to create a PR about it. My first goal for the next week is to finish up that implementation quickly so that it can get merged into the main branch soon.</p>
+
+
+
+<p>That is not all in this blog post, of course. As I told you, we had a meeting last Thursday to discuss how we want to shape error plots and residual plots and how we should group them. As they have a very similar logic behind them, it doesn&#8217;t make much sense to have different documentation pages for them. At the same time, having many functions on the same page will also lead to cluttered documentation and confuse users. Therefore, we decided to start with a fresh, blank page. We wanted to gather all functionalities that we want to have regarding error and residual plots, and then go forward. So, I created <a target="_blank" href="https://github.com/stan-dev/bayesplot/issues/361" rel="noreferrer noopener">a new issue</a> to gather our and community members&#8217; ideas about these types of plots. Then, we will see which of those desired functionalities we already have implementations for and which of those need new implementations. Then, we will transfer everything to a new documentation page and make a fresh start for error and residual plots. Of course, this will take quite some time and certainly will extend beyond my GSoC time; however, I am happy that we are taking steps forward, and I&#8217;m glad that I&#8217;m a part of this journey. I would like to stay around and contribute when we do those transitions, but for now, I have to focus on other things as part of the programme. What are those going to be except rootograms? You will hear in the next blog post!</p>
+
+
+<ol class="wp-block-footnotes"><li id="6999679c-4d69-499b-96cd-3800b4e85c5b"><meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a href="https://arxiv.org/abs/2503.01509">https://arxiv.org/abs/2503.01509</a> <a href="#6999679c-4d69-499b-96cd-3800b4e85c5b-link" aria-label="Jump to footnote reference 1"><img src="https://s.w.org/images/core/emoji/16.0.1/72x72/21a9.png" alt="↩" class="wp-smiley" style="height: 1em; max-height: 1em;" />︎</a></li></ol>]]></content:encoded>
+					
+					<wfw:commentRss>https://behramulukir.github.io/gsoc-diaries-5-a-week-off-and-some-planning/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>GSoC Diaries #3: First PR</title>
+		<link>https://behramulukir.github.io/gsoc-diaries-3-first-pr/</link>
+					<comments>https://behramulukir.github.io/gsoc-diaries-3-first-pr/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Jun 2025 12:28:47 +0000</pubDate>
+				<category><![CDATA[GSoC Diaries]]></category>
+		<category><![CDATA[Bayesplot]]></category>
+		<category><![CDATA[dot plot]]></category>
+		<category><![CDATA[ggdist]]></category>
+		<category><![CDATA[ggplot2]]></category>
+		<category><![CDATA[GitHub]]></category>
+		<category><![CDATA[Google Summer of Code]]></category>
+		<category><![CDATA[PR]]></category>
+		<category><![CDATA[Stan]]></category>
+		<guid isPermaLink="false">https://behramulukir.github.io/?p=717</guid>
+
+					<description><![CDATA[Hey, In the last blog post, I mentioned that I have been working on the dot plots. You know what, it was much more complicated than I anticipated. If you remember, I told you that there are two options to use under-the-hood while implementing dot plots for bayesplot, geom_dotplot and stat_dots. While the former one [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hey,</p>
+
+
+
+<p>In the <a target="_blank" href="/gsoc-diaries-2-quantile-dot-plots/" rel="noreferrer noopener">last blog post</a>, I mentioned that I have been working on the dot plots. You know what, it was much more complicated than I anticipated. If you remember, I told you that there are two options to use under-the-hood while implementing dot plots for bayesplot, <em>geom_dotplot</em> and <em>stat_dots</em>. While the former one offers a simple solution for the feature that I was trying to implement, the latter one has more advanced capabilities at the expense of adding new dependencies to the package. I didn&#8217;t want that. I was confident that I would be able to implement what <em>stat_dots</em> offers by tweaking <em>geom_dotplot</em>. A fault confessed is half redressed. After spending a significant amount of time implementing auto-sizing dots and stack ratio of dot plots by finding the number of the tallest line, I realised that I would need more work than just tweaking the <em>geom_dotplot</em>. I would need to implement a whole new <em>geom</em> and simply build what <em>stat_dots</em> offers from scratch. After consulting with Jonah, Aki, and Teemu, I have decided that using <em>stat_dots</em> is the better way to go.</p>
+
+
+
+<p>We didn&#8217;t want to hard-introduce <em>ggdist</em> and instead, we added it as a suggested dependency to the package. On top of that, we added a check to the newly implemented <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em> to see whether <em>ggdist</em> is implemented or not. The rest was relatively straightforward. By following similar functions that were already implemented, such as <em>ppc_hist</em>, I built <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em>. They simply are functions that take inputs of Bayesian methods, format them nicely and turn them into graphs by passing them to the<em> stat_dots</em> function.</p>
+
+
+
+<p>However, there is more to open-source software development than just implementing the functions. It needs to have detailed documentation as well as a sensible testing structure. I started with documentation simply because it was easier to do. Since bayesplot uses <em>roxygen</em> to create its documentation, I had to follow a certain structure while creating documentation. By following the existing documentation, I explained the new functions in detail and also created an example to showcase how it works. I also created tests for new functions. Bayesplot utilises the <em>testthat</em> library to build unit tests and has two main types of tests: the first one is to test that functions return correct types for different argument combinations, and the second type is to test whether the outputs of functions have changed since the last time that tests are run. To the second one, graphs are saved as SVG files, and they are compared with the outputs of the next test run. The only issue with this structure is that sometimes SVG files change without any visible change to graphics, which leads to false negatives. To implement these tests for <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em>, I have followed the existing examples. The only addition I had was wrapping some of the test functions with <em>expect_warning</em>. This was because sometimes when dots don&#8217;t fit the graph, <em>stat_dots</em> throws an error, which is not subject to our unit tests and can be ignored in this context. While doing that, I have allowed those unit tests to ignore those warning messages.</p>
+
+
+
+<p>All of these things that I have explained simply constitute the basis of my first PR to the bayesplot library. PR is still pending to be merged, and I will fix any issues based on the feedback of my mentors. I am happy with my work so far, and I feel like I am learning quite a lot, not just in terms of technical skills but also about general procedures of software development. If everything goes well with this function, my next plan is to work on discrete residual plots. Hope to explain that part in the next blog post!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://behramulukir.github.io/gsoc-diaries-3-first-pr/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

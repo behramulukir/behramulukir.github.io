@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>refactoring &#8211; Behram Ulukır</title>
+	<atom:link href="https://behramulukir.github.io/tag/refactoring/feed/" rel="self" type="application/rss+xml" />
+	<link>http://behramulukir.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 26 Aug 2025 10:42:49 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.2</generator>
+	<item>
+		<title>GSoC Diaries #7: Code Refactoring</title>
+		<link>https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/</link>
+					<comments>https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 26 Aug 2025 10:42:48 +0000</pubDate>
+				<category><![CDATA[GSoC Diaries]]></category>
+		<category><![CDATA[Bayesplot]]></category>
+		<category><![CDATA[error plot]]></category>
+		<category><![CDATA[ggplot2]]></category>
+		<category><![CDATA[GitHub]]></category>
+		<category><![CDATA[Google Summer of Code]]></category>
+		<category><![CDATA[PR]]></category>
+		<category><![CDATA[refactoring]]></category>
+		<category><![CDATA[rootogram]]></category>
+		<category><![CDATA[Stan]]></category>
+		<guid isPermaLink="false">https://behramulukir.github.io/?p=748</guid>
+
+					<description><![CDATA[Hey, Sometimes you make some plans; however, life has some other plans. I believe that code refactoring is a canonical event for every developer and for every software package. Sometimes it is a complete overhaul, and sometimes it is just about rewriting a single function, like I did over the last two weeks. Just as [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hey,</p>
+
+
+
+<p>Sometimes you make some plans; however, life has some other plans. I believe that code refactoring is a canonical event for every developer and for every software package. Sometimes it is a complete overhaul, and sometimes it is just about rewriting a single function, like I did over the last two weeks. Just as I thought I am done with adding the new <em>discrete</em> style to <em>ppc_rootogram</em>, I was -reasonably- told that code I wrote is fairly messy and would be much easier to maintain if I refactor it, split it into two different functions and move data processing to this newly created internal function and change the logic of how visuals are drawn based on the arguments that user passed to the function. It made complete sense, to be honest. I am not going to be around all the time, and if the functionality that I added would create extra problems in the future, that&#8217;s a big issue. Therefore, I got to work and started refactoring the <em>ppc_rootogram</em>, effectively writing it from the ground up.</p>
+
+
+
+<p>The issue with <em>ppc_rootogram</em> is that it has three different visual styles that the user can choose from: standing, hanging, suspended, and discrete. Out of these styles, the first three are fairly similar to each other. They use the same visual elements, such as histograms, lines, and filled areas, while the discrete one uses points and point ranges. They also have different shades of the chosen colour used to indicate different things, as well as different labelling and even different values on the y-axis. Especially having different values on the y-axis meant the data preparation for the discrete style is different from that for other styles. In standing, hanging, suspended styles, on the y-axis, the values are plotted with equal intervals, on a square-root scale. On the other hand, discrete style y-axis values are plotted with squared intervals on a square root scale. What I did at the end of the day was create an internal helper function named <em>.ppc_rootogram_data</em> to prepare the different data matrices needed for each style accordingly. This function is placed at the end of the <em>ppc-discrete</em> file and not exported, so it cannot be called by external users. Then, this function is called at the beginning of the <em>ppc_rootogram</em> rootogram to get the correct data matrix. After that, I created an if statement to create different geoms based on the style preference of the user. Then those geoms and other stylistic elements are combined in the final if statement that adds and manipulates the visuality of the graph according to the style that is being followed. This refactoring process made the code much more readable, and it got easier to maintain. It&#8217;ll also be easier to deprecate old styles or add new styles in the future. After doing some final bug fixing, the PR got approval from two reviewers, Teemu and Jonah, and I merged it into the main branch. This also marks the first merge action that I did on bayesplot! You know what, it felt good. I felt like a little kid who is let to play with big brother&#8217;s more complex toys. You can see that work <a target="_blank" href="https://github.com/stan-dev/bayesplot/pull/362" rel="noreferrer noopener">here</a>.</p>
+
+
+
+<p>This was not all I did, I am glad to say. I also did some maintenance work. For a long time, it bothered me that there are two different functions, <em>ppc_scatter_error_avg</em> and <em>ppc_scatter_error_avg_vs_x</em>. These functions were doing pretty much the same work, except that the latter had an <em>x</em> argument, which is then plotted on the x-axis, moving the error values to the y-axis. Like I said in the <a target="_blank" href="/gsoc-diaries-6-new-rootogram-style/" rel="noreferrer noopener">last blog post</a>, I was planning to combine these functions, so I went ahead and did that. It was simply checking if anything was passed to the optional <em>x</em> argument, and if yes, doing a few checks and passing it correctly to the helper function, which is doing the actual plotting. This didn&#8217;t take me long to implement; however, I am happy that I ticked another box and moved another task on my project board to <em>the done</em> tab. You can see that work <a target="_blank" href="https://github.com/stan-dev/bayesplot/pull/367" rel="noreferrer noopener">here</a>.</p>
+
+
+
+<p>Next week is the final week of Google Summer of Code, so there are only a handful of things that I plan to do. First, I hope to complete the implementation of <em>ppc_residual_scatter</em>. It initially seemed quite complicated to me, but after discussing it with Teemu, we realised that there should be a relatively straightforward way to implement this. If I still have time after doing this, I&#8217;ll pick up some tasks from the open issues and implement them. I also need to write my final report and do my final submission to Google. See you sooner next time!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

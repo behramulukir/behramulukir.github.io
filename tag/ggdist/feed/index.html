@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ggdist &#8211; Behram Ulukır</title>
+	<atom:link href="https://behramulukir.github.io/tag/ggdist/feed/" rel="self" type="application/rss+xml" />
+	<link>http://behramulukir.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 26 Aug 2025 11:09:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.2</generator>
+	<item>
+		<title>GSoC Diaries #3: First PR</title>
+		<link>https://behramulukir.github.io/gsoc-diaries-3-first-pr/</link>
+					<comments>https://behramulukir.github.io/gsoc-diaries-3-first-pr/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 28 Jun 2025 12:28:47 +0000</pubDate>
+				<category><![CDATA[GSoC Diaries]]></category>
+		<category><![CDATA[Bayesplot]]></category>
+		<category><![CDATA[dot plot]]></category>
+		<category><![CDATA[ggdist]]></category>
+		<category><![CDATA[ggplot2]]></category>
+		<category><![CDATA[GitHub]]></category>
+		<category><![CDATA[Google Summer of Code]]></category>
+		<category><![CDATA[PR]]></category>
+		<category><![CDATA[Stan]]></category>
+		<guid isPermaLink="false">https://behramulukir.github.io/?p=717</guid>
+
+					<description><![CDATA[Hey, In the last blog post, I mentioned that I have been working on the dot plots. You know what, it was much more complicated than I anticipated. If you remember, I told you that there are two options to use under-the-hood while implementing dot plots for bayesplot, geom_dotplot and stat_dots. While the former one [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hey,</p>
+
+
+
+<p>In the <a target="_blank" href="/gsoc-diaries-2-quantile-dot-plots/" rel="noreferrer noopener">last blog post</a>, I mentioned that I have been working on the dot plots. You know what, it was much more complicated than I anticipated. If you remember, I told you that there are two options to use under-the-hood while implementing dot plots for bayesplot, <em>geom_dotplot</em> and <em>stat_dots</em>. While the former one offers a simple solution for the feature that I was trying to implement, the latter one has more advanced capabilities at the expense of adding new dependencies to the package. I didn&#8217;t want that. I was confident that I would be able to implement what <em>stat_dots</em> offers by tweaking <em>geom_dotplot</em>. A fault confessed is half redressed. After spending a significant amount of time implementing auto-sizing dots and stack ratio of dot plots by finding the number of the tallest line, I realised that I would need more work than just tweaking the <em>geom_dotplot</em>. I would need to implement a whole new <em>geom</em> and simply build what <em>stat_dots</em> offers from scratch. After consulting with Jonah, Aki, and Teemu, I have decided that using <em>stat_dots</em> is the better way to go.</p>
+
+
+
+<p>We didn&#8217;t want to hard-introduce <em>ggdist</em> and instead, we added it as a suggested dependency to the package. On top of that, we added a check to the newly implemented <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em> to see whether <em>ggdist</em> is implemented or not. The rest was relatively straightforward. By following similar functions that were already implemented, such as <em>ppc_hist</em>, I built <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em>. They simply are functions that take inputs of Bayesian methods, format them nicely and turn them into graphs by passing them to the<em> stat_dots</em> function.</p>
+
+
+
+<p>However, there is more to open-source software development than just implementing the functions. It needs to have detailed documentation as well as a sensible testing structure. I started with documentation simply because it was easier to do. Since bayesplot uses <em>roxygen</em> to create its documentation, I had to follow a certain structure while creating documentation. By following the existing documentation, I explained the new functions in detail and also created an example to showcase how it works. I also created tests for new functions. Bayesplot utilises the <em>testthat</em> library to build unit tests and has two main types of tests: the first one is to test that functions return correct types for different argument combinations, and the second type is to test whether the outputs of functions have changed since the last time that tests are run. To the second one, graphs are saved as SVG files, and they are compared with the outputs of the next test run. The only issue with this structure is that sometimes SVG files change without any visible change to graphics, which leads to false negatives. To implement these tests for <em>ppc_qdotplot</em> and <em>ppd_qdotplot</em>, I have followed the existing examples. The only addition I had was wrapping some of the test functions with <em>expect_warning</em>. This was because sometimes when dots don&#8217;t fit the graph, <em>stat_dots</em> throws an error, which is not subject to our unit tests and can be ignored in this context. While doing that, I have allowed those unit tests to ignore those warning messages.</p>
+
+
+
+<p>All of these things that I have explained simply constitute the basis of my first PR to the bayesplot library. PR is still pending to be merged, and I will fix any issues based on the feedback of my mentors. I am happy with my work so far, and I feel like I am learning quite a lot, not just in terms of technical skills but also about general procedures of software development. If everything goes well with this function, my next plan is to work on discrete residual plots. Hope to explain that part in the next blog post!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://behramulukir.github.io/gsoc-diaries-3-first-pr/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>GSoC Diaries #2: Starting with Dot Plots</title>
+		<link>https://behramulukir.github.io/gsoc-diaries-2-quantile-dot-plots/</link>
+					<comments>https://behramulukir.github.io/gsoc-diaries-2-quantile-dot-plots/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 14 Jun 2025 19:20:12 +0000</pubDate>
+				<category><![CDATA[GSoC Diaries]]></category>
+		<category><![CDATA[Bayesplot]]></category>
+		<category><![CDATA[dot plot]]></category>
+		<category><![CDATA[ggdist]]></category>
+		<category><![CDATA[ggplot2]]></category>
+		<category><![CDATA[Google Summer of Code]]></category>
+		<category><![CDATA[Stan]]></category>
+		<guid isPermaLink="false">https://behramulukir.github.io/?p=697</guid>
+
+					<description><![CDATA[Hey,It has been two weeks since I wrote the previous journal entry, which was aimed at concluding the community bonding period and starting the coding period. The coding period has been underway since the beginning of this month, and I wanted to give an update about my progress so far, as I promised. I&#8217;ll start [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hey,<br>It has been two weeks since I wrote the previous journal entry, which was aimed at concluding the community bonding period and starting the coding period. The coding period has been underway since the beginning of this month, and I wanted to give an update about my progress so far, as I promised.</p>
+
+
+
+<p>I&#8217;ll start by confessing one thing: the coding period has started fairly slowly for me. Unfortunately, my final exams -which I had 3 of them- spanned from June 2 to June 6, pretty much blocking my chances to do any significant coding for that week. Don&#8217;t get me wrong, though, I have done stuff. We already had a GitHub project as our project management tab, and I spent my free time looking at the task items there, organising and editing them.</p>
+
+
+
+<p>Things took off more in the second week, though. When I got freed from the school work, I had so much time to dedicate to Google Summer of Code, which I happily did. We had an initial meeting to discuss which task item I should start working on, and decided that quantile dot plots are the best option, as we anticipated that they should be rather similar in implementation compared to other graphing options we have, such as histograms or density plots. To implement this, I had two options to choose from:</p>
+
+
+
+<ul class="wp-block-list">
+<li>ggplot2::geom_dotplot()</li>
+
+
+
+<li>ggdist:stat_dots()</li>
+</ul>
+
+
+
+<p>Just by looking at those functions, it was clear that <em>ggdist::stat_dots()</em> is simply the superior function when it comes to plotting dots on Cartesian axes, since it gives the option to plot only certain quantiles of the data. Even though it was dependent on the <em>ggplot::geom_dotplot()</em>, it has some very remarkable upgrades and a few extra customisation opportunities over the bare <em>ggplot::geom_dotplot()</em> function, which was the second option.</p>
+
+
+
+<p>However, software development is never just about picking the most advanced method. If the more basic method is enough for the purposes of the project, then it&#8217;s likely to be a better fit since advanced capabilities often come with extra maintenance tasks. Therefore, I decided to examine both of the functions well enough and made my decision in an informed way.</p>
+
+
+
+<p>This is not the only thing we discussed in the meeting, of course. We also discussed a lot about the testing of newly implemented functions. Testing functions that return visual objects is slightly different from testing functions that return easily comparable items. For that reason, bayesplot has a testing approach that saves the image files and compares them to see what the changes are from the previous version of the function to the next version. Bayesplot doesn&#8217;t employ a strict test-driven development; however, it was among the topics that we discussed. We also agreed about some practicalities and made sure how we want to run things moving forward, such as me being responsible for calling the meetings when I need them and Teemu being the first responsible for the project.</p>
+
+
+
+<p>The first two weeks weren&#8217;t as productive as I would have wished due to school and exams; however, I am happy with the progress I have made, especially in the last week. In the next two weeks, my goal is to dedicate most of my time to implementing the dot plot function with proper testing and documentation.</p>
+
+
+
+<p>See you in the next entry of GSoC diaries!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://behramulukir.github.io/gsoc-diaries-2-quantile-dot-plots/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
