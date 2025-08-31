@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<title>GSoC Diaries #8: Final Evaluation – Behram Ulukır</title>
+
+
+
+<style id="wp-block-navigation-link-inline-css">
+.wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word}.wp-block-navigation .wp-block-navigation-item__description{display:none}.link-ui-tools{border-top:1px solid #f0f0f0;padding:8px}.link-ui-block-inserter{padding-top:8px}.link-ui-block-inserter__back{margin-left:8px;text-transform:uppercase}
+</style>
+<link rel="stylesheet" id="wp-block-navigation-css" href="https://behramulukir.github.io/wp-includes/blocks/navigation/style.min.css" media="all">
+<style id="wp-block-site-title-inline-css">
+.wp-block-site-title{box-sizing:border-box}.wp-block-site-title :where(a){color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+</style>
+<style id="wp-block-group-inline-css">
+.wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative}
+</style>
+<style id="wp-block-post-title-inline-css">
+.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title :where(a){display:inline-block;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+</style>
+<style id="wp-block-post-date-inline-css">
+.wp-block-post-date{box-sizing:border-box}
+</style>
+<style id="wp-block-post-featured-image-inline-css">
+.wp-block-post-featured-image{margin-left:0;margin-right:0}.wp-block-post-featured-image a{display:block;height:100%}.wp-block-post-featured-image :where(img){box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom;width:100%}.wp-block-post-featured-image.alignfull img,.wp-block-post-featured-image.alignwide img{width:100%}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim{background-color:#000;inset:0;position:absolute}.wp-block-post-featured-image{position:relative}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-gradient{background-color:initial}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-0{opacity:0}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-10{opacity:.1}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-20{opacity:.2}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-30{opacity:.3}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-40{opacity:.4}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-50{opacity:.5}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-60{opacity:.6}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-70{opacity:.7}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-80{opacity:.8}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-90{opacity:.9}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-100{opacity:1}.wp-block-post-featured-image:where(.alignleft,.alignright){width:100%}
+</style>
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+</style>
+<style id="wp-block-heading-inline-css">
+h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-background,h6.has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+</style>
+<style id="wp-block-quote-inline-css">
+.wp-block-quote{box-sizing:border-box;overflow-wrap:break-word}.wp-block-quote.is-large:where(:not(.is-style-plain)),.wp-block-quote.is-style-large:where(:not(.is-style-plain)){margin-bottom:1em;padding:0 1em}.wp-block-quote.is-large:where(:not(.is-style-plain)) p,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) p{font-size:1.5em;font-style:italic;line-height:1.6}.wp-block-quote.is-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-large:where(:not(.is-style-plain)) footer,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) footer{font-size:1.125em;text-align:right}.wp-block-quote>cite{display:block}
+</style>
+<style id="wp-block-list-inline-css">
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+</style>
+<style id="wp-block-footnotes-inline-css">
+.editor-styles-wrapper,.entry-content{counter-reset:footnotes}a[data-fn].fn{counter-increment:footnotes;display:inline-flex;font-size:smaller;text-decoration:none;text-indent:-9999999px;vertical-align:super}a[data-fn].fn:after{content:"[" counter(footnotes) "]";float:left;text-indent:0}
+</style>
+<style id="wp-block-post-content-inline-css">
+.wp-block-post-content{display:flow-root}
+</style>
+<style id="wp-block-post-terms-inline-css">
+.wp-block-post-terms{box-sizing:border-box}.wp-block-post-terms .wp-block-post-terms__separator{white-space:pre-wrap}
+</style>
+<style id="wp-block-post-navigation-link-inline-css">
+.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous{display:inline-block;margin-right:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next{display:inline-block;margin-left:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link.has-text-align-left[style*="writing-mode: vertical-lr"],.wp-block-post-navigation-link.has-text-align-right[style*="writing-mode: vertical-rl"]{rotate:180deg}
+</style>
+<style id="wp-block-query-pagination-inline-css">
+.wp-block-query-pagination.is-content-justification-space-between>.wp-block-query-pagination-next:last-of-type{margin-inline-start:auto}.wp-block-query-pagination.is-content-justification-space-between>.wp-block-query-pagination-previous:first-child{margin-inline-end:auto}.wp-block-query-pagination .wp-block-query-pagination-previous-arrow{display:inline-block;margin-right:1ch}.wp-block-query-pagination .wp-block-query-pagination-previous-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-query-pagination .wp-block-query-pagination-next-arrow{display:inline-block;margin-left:1ch}.wp-block-query-pagination .wp-block-query-pagination-next-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-query-pagination.aligncenter{justify-content:center}
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,161;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px;--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color)}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--foreground: #1D201F;--wp--preset--color--primary: #707170;--wp--preset--color--secondary: #D6D5D3;--wp--preset--color--background: #F7F5F3;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: clamp(16px, 1rem + ((1vw - 3.2px) * 0.313), 18px);--wp--preset--font-size--medium: clamp(19px, 1.188rem + ((1vw - 3.2px) * 0.469), 22px);--wp--preset--font-size--large: clamp(21px, 1.313rem + ((1vw - 3.2px) * 0.469), 24px);--wp--preset--font-size--x-large: clamp(25.014px, 1.563rem + ((1vw - 3.2px) * 2.654), 42px);--wp--preset--font-size--tiny: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.313), 16px);--wp--preset--font-size--heading-6: clamp(21px, 1.313rem + ((1vw - 3.2px) * 0.156), 22px);--wp--preset--font-size--heading-5: clamp(24px, 1.5rem + ((1vw - 3.2px) * 0.313), 26px);--wp--preset--font-size--extra-large: clamp(24px, 1.5rem + ((1vw - 3.2px) * 1.25), 32px);--wp--preset--font-size--heading-4: clamp(27px, 1.688rem + ((1vw - 3.2px) * 0.781), 32px);--wp--preset--font-size--heading-2: clamp(33px, 2.063rem + ((1vw - 3.2px) * 0.781), 38px);--wp--preset--font-size--heading-3: clamp(30px, 1.875rem + ((1vw - 3.2px) * 1.563), 40px);--wp--preset--font-size--heading-1: clamp(36px, 2.25rem + ((1vw - 3.2px) * 2.813), 54px);--wp--preset--font-size--huge: clamp(36px, 2.25rem + ((1vw - 3.2px) * 4.375), 64px);--wp--preset--font-family--default-sans: "Albert Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;--wp--preset--font-family--default-serif: "STIX Two Text", ui-serif, Georgia, serif;--wp--preset--font-family--system-monospace: ui-monospace, Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;--wp--preset--font-family--system-sans-serif: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;--wp--preset--font-family--system-serif: ui-serif, Georgia, serif;--wp--preset--spacing--20: 12px;--wp--preset--spacing--30: 16px;--wp--preset--spacing--40: 24px;--wp--preset--spacing--50: 32px;--wp--preset--spacing--60: clamp(32px, 7.5vw, 40px);--wp--preset--spacing--70: clamp(48px, 9vw, 64px);--wp--preset--spacing--80: 14vh;--wp--preset--spacing--10: 8px;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);--wp--custom--spacing--baseline: 16px;--wp--custom--spacing--gutter: clamp( calc( 1.5 * var(--wp--custom--spacing--baseline) ), 5.8vw, calc( 4 * var(--wp--custom--spacing--baseline) ) );--wp--custom--spacing--outer: var(--wp--custom--spacing--gutter);--wp--custom--spacing--small: min(32px, 6.4vw);--wp--custom--typography--letter-spacing--body: -0.01em;--wp--custom--typography--letter-spacing--heading: -0.02em;--wp--custom--typography--letter-spacing--uppercase: 0;--wp--custom--typography--line-height--body: 1.45em;--wp--custom--typography--line-height--headings: 1.25;}:root { --wp--style--global--content-size: 632px;--wp--style--global--wide-size: 960px; }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 1.6rem; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 1.6rem; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 1.6rem;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 1.6rem;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 1.6rem;}:root :where(.is-layout-grid){gap: 1.6rem;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--wp--preset--color--background);color: var(--wp--preset--color--foreground);font-family: var(--wp--preset--font-family--default-sans);font-size: var(--wp--preset--font-size--medium);font-weight: 500;letter-spacing: var(--wp--custom--typography--letter-spacing--body);line-height: var(--wp--custom--typography--line-height--body);--wp--style--root--padding-top: var(--wp--preset--spacing--70);--wp--style--root--padding-right: var(--wp--preset--spacing--50);--wp--style--root--padding-bottom: var(--wp--preset--spacing--70);--wp--style--root--padding-left: var(--wp--preset--spacing--50);}a:where(:not(.wp-element-button)){color: inherit;text-decoration: underline;}:root :where(a:where(:not(.wp-element-button)):hover){text-decoration: none;}h1, h2, h3, h4, h5, h6{font-family: var(--wp--preset--font-family--default-sans);font-weight: 700;letter-spacing: var(--wp--custom--typography--letter-spacing--heading);line-height: var(--wp--custom--typography--line-height--headings);margin-top: 1.25em;margin-bottom: .75em;}h1{font-size: var(--wp--preset--font-size--heading-1);}h2{font-size: var(--wp--preset--font-size--heading-2);}h3{font-size: var(--wp--preset--font-size--heading-3);}h4{font-size: var(--wp--preset--font-size--heading-4);}h5{font-size: var(--wp--preset--font-size--heading-5);}h6{font-size: var(--wp--preset--font-size--heading-6);}:root :where(.wp-element-button, .wp-block-button__link){background-color: var(--wp--preset--color--foreground);border-width: 0;color: var(--wp--preset--color--background);font-family: var(--wp--preset--font-family--default-sans);font-size: var(--wp--preset--font-size--small);font-weight: 600;line-height: var(--wp--custom--typography--line-height--headings);padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}:root :where(.wp-element-caption, .wp-block-audio figcaption, .wp-block-embed figcaption, .wp-block-gallery figcaption, .wp-block-image figcaption, .wp-block-table figcaption, .wp-block-video figcaption){color: var(--wp--preset--color--primary);font-family: var(--wp--preset--font-family--default-sans);font-size: var(--wp--preset--font-size--small);font-weight: 500;}cite{font-size: var(--wp--preset--font-size--medium);font-weight: 600;margin-top: 1em;text-transform: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-foreground-color{color: var(--wp--preset--color--foreground) !important;}.has-primary-color{color: var(--wp--preset--color--primary) !important;}.has-secondary-color{color: var(--wp--preset--color--secondary) !important;}.has-background-color{color: var(--wp--preset--color--background) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-foreground-background-color{background-color: var(--wp--preset--color--foreground) !important;}.has-primary-background-color{background-color: var(--wp--preset--color--primary) !important;}.has-secondary-background-color{background-color: var(--wp--preset--color--secondary) !important;}.has-background-background-color{background-color: var(--wp--preset--color--background) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-foreground-border-color{border-color: var(--wp--preset--color--foreground) !important;}.has-primary-border-color{border-color: var(--wp--preset--color--primary) !important;}.has-secondary-border-color{border-color: var(--wp--preset--color--secondary) !important;}.has-background-border-color{border-color: var(--wp--preset--color--background) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-tiny-font-size{font-size: var(--wp--preset--font-size--tiny) !important;}.has-heading-6-font-size{font-size: var(--wp--preset--font-size--heading-6) !important;}.has-heading-5-font-size{font-size: var(--wp--preset--font-size--heading-5) !important;}.has-extra-large-font-size{font-size: var(--wp--preset--font-size--extra-large) !important;}.has-heading-4-font-size{font-size: var(--wp--preset--font-size--heading-4) !important;}.has-heading-2-font-size{font-size: var(--wp--preset--font-size--heading-2) !important;}.has-heading-3-font-size{font-size: var(--wp--preset--font-size--heading-3) !important;}.has-heading-1-font-size{font-size: var(--wp--preset--font-size--heading-1) !important;}.has-huge-font-size{font-size: var(--wp--preset--font-size--huge) !important;}.has-default-sans-font-family{font-family: var(--wp--preset--font-family--default-sans) !important;}.has-default-serif-font-family{font-family: var(--wp--preset--font-family--default-serif) !important;}.has-system-monospace-font-family{font-family: var(--wp--preset--font-family--system-monospace) !important;}.has-system-sans-serif-font-family{font-family: var(--wp--preset--font-family--system-sans-serif) !important;}.has-system-serif-font-family{font-family: var(--wp--preset--font-family--system-serif) !important;}
+:root :where(.wp-block-navigation a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-navigation a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(p){line-height: var(--wp--custom--typography--line-height--body);}
+:root :where(.wp-block-post-content){font-family: var(--wp--preset--font-family--default-serif);font-weight: 400;letter-spacing: 0;}
+:root :where(.wp-block-post-date){letter-spacing: var(--wp--custom--typography--letter-spacing--body);line-height: var(--wp--custom--typography--line-height--body);}
+:root :where(.wp-block-post-date a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-post-date a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(.wp-block-post-navigation-link a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-post-navigation-link a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(.wp-block-post-title a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-post-title a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(.wp-block-query-pagination.wp-block-query-pagination ){margin-block-start: 20px !important;}
+:root :where(.wp-block-query-pagination a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-query-pagination a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+:root :where(.wp-block-quote){border-left-color: var(--wp--preset--color--secondary);border-left-width: 1px;border-left-style: solid;padding-left: 1.5em;}
+:root :where(.wp-block-site-title){font-family: inherit;font-style: inherit;font-weight: 500;margin-top: 0px;margin-bottom: 0px;text-transform: inherit;}
+:root :where(.wp-block-site-title a:where(:not(.wp-element-button))){text-decoration: none;}
+:root :where(.wp-block-site-title a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
+</style>
+<style id="core-block-supports-inline-css">
+.wp-container-core-navigation-is-layout-64ede673{justify-content:center;}.wp-elements-64f06cefa222ed28fe860a2daefde5a6 a:where(:not(.wp-element-button)){color:var(--wp--preset--color--contrast);}.wp-container-core-group-is-layout-734eb2c2{flex-direction:column;align-items:center;}.wp-container-core-group-is-layout-eb524166 > .alignfull{margin-right:calc(var(--wp--preset--spacing--30) * -1);margin-left:calc(var(--wp--preset--spacing--30) * -1);}.wp-container-core-group-is-layout-9a402448 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-9a402448 > * + *{margin-block-start:.1em;margin-block-end:0;}.wp-container-core-group-is-layout-a62636b3 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-a62636b3 > * + *{margin-block-start:var(--wp--preset--spacing--80);margin-block-end:0;}.wp-container-core-post-content-is-layout-4125e2a6 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-post-content-is-layout-4125e2a6 > * + *{margin-block-start:0.8%;margin-block-end:0;}.wp-container-core-group-is-layout-27bff3d2{flex-wrap:nowrap;gap:0.25em;}.wp-container-core-group-is-layout-5dbaebb5{flex-wrap:nowrap;gap:0.5em;flex-direction:column;align-items:flex-start;}.wp-container-core-group-is-layout-6141fbbf > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-6141fbbf > * + *{margin-block-start:32px;margin-block-end:0;}.wp-container-core-group-is-layout-4e3604a6 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-4e3604a6 > * + *{margin-block-start:var(--wp--preset--spacing--50);margin-block-end:0;}.wp-container-core-query-pagination-is-layout-2f00920f{flex-direction:column;align-items:flex-start;}.wp-container-core-group-is-layout-777886d4 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-777886d4 > * + *{margin-block-start:var(--wp--preset--spacing--80);margin-block-end:0;}.wp-container-core-group-is-layout-24a9dfa4{gap:1em;justify-content:center;}
+</style>
+<style id="wp-block-template-skip-link-inline-css">
+
+		.skip-link.screen-reader-text {
+			border: 0;
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
+
+		.skip-link.screen-reader-text:focus {
+			background-color: #eee;
+			clip-path: none;
+			color: #444;
+			display: block;
+			font-size: 1em;
+			height: auto;
+			left: 5px;
+			line-height: normal;
+			padding: 15px 23px 14px;
+			text-decoration: none;
+			top: 5px;
+			width: auto;
+			z-index: 100000;
+		}
+</style>
+<link rel="stylesheet" id="beaumont-styles-css" href="https://behramulukir.github.io/wp-content/themes/beaumont/style.css" media="all">
+<style id="block-visibility-screen-size-styles-inline-css">
+/* Large screens (desktops, 992px and up) */
+@media ( min-width: 992px ) {
+	.block-visibility-hide-large-screen {
+		display: none !important;
+	}
+}
+
+/* Medium screens (tablets, between 768px and 992px) */
+@media ( min-width: 768px ) and ( max-width: 991.98px ) {
+	.block-visibility-hide-medium-screen {
+		display: none !important;
+	}
+}
+
+/* Small screens (mobile devices, less than 768px) */
+@media ( max-width: 767.98px ) {
+	.block-visibility-hide-small-screen {
+		display: none !important;
+	}
+}
+</style>
+
+
+
+
+
+
+<script type="importmap" id="wp-importmap">
+{"imports":{"@wordpress\/interactivity":"https:\/\/behramulukir.github.io\/wp-includes\/js\/dist\/script-modules\/interactivity\/index.min.js?ver=55aebb6e0a16726baffb"}}
+</script>
+<script type="module" src="https://behramulukir.github.io/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js" id="@wordpress/block-library/navigation/view-js-module"></script>
+<link rel="modulepreload" href="https://behramulukir.github.io/wp-includes/js/dist/script-modules/interactivity/index.min.js" id="@wordpress/interactivity-js-modulepreload"><style class="wp-fonts-local">
+@font-face{font-family:"Albert Sans";font-style:italic;font-weight:100 900;font-display:fallback;src:url('https://behramulukir.github.io/wp-content/themes/beaumont/assets/fonts/albert-sans/AlbertSans-Italic-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"Albert Sans";font-style:normal;font-weight:100 900;font-display:fallback;src:url('https://behramulukir.github.io/wp-content/themes/beaumont/assets/fonts/albert-sans/AlbertSans-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"STIX Two Text";font-style:italic;font-weight:100 900;font-display:fallback;src:url('https://behramulukir.github.io/wp-content/themes/beaumont/assets/fonts/stix-two-text/STIXTwoText-Italic-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:"STIX Two Text";font-style:normal;font-weight:100 900;font-display:fallback;src:url('https://behramulukir.github.io/wp-content/themes/beaumont/assets/fonts/stix-two-text/STIXTwoText-VariableFont_wght.woff2') format('woff2');font-stretch:normal;}
+</style>
+</head>
+
+<body class="wp-singular post-template post-template-post-g-so-c-diaries-3-first-pr single single-post postid-832 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-beaumont">
+
+<div class="wp-site-blocks"><header class="site-header wp-block-template-part">
+<div class="wp-block-group alignfull has-global-padding is-layout-constrained wp-container-core-group-is-layout-eb524166 wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-group alignwide is-vertical is-content-justification-center is-layout-flex wp-container-core-group-is-layout-734eb2c2 wp-block-group-is-layout-flex"><nav class="is-responsive items-justified-center wp-block-navigation is-content-justification-center is-layout-flex wp-container-core-navigation-is-layout-64ede673 wp-block-navigation-is-layout-flex" aria-label="Header menu" data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on-async--click="actions.openMenuOnClick" data-wp-on--keydown="actions.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
+				<div class="wp-block-navigation__responsive-container" id="modal-1" data-wp-class--has-modal-open="state.isMenuOpen" data-wp-class--is-menu-open="state.isMenuOpen" data-wp-watch="callbacks.initMenu" data-wp-on--keydown="actions.handleMenuKeydown" data-wp-on-async--focusout="actions.handleMenuFocusout" tabindex="-1">
+					<div class="wp-block-navigation__responsive-close" tabindex="-1">
+						<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="state.ariaModal" data-wp-bind--aria-label="state.ariaLabel" data-wp-bind--role="state.roleAttribute">
+							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on-async--click="actions.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
+							<div class="wp-block-navigation__responsive-container-content" data-wp-watch="callbacks.focusFirstElement" id="modal-1-content">
+								<ul class="wp-block-navigation__container is-responsive items-justified-center wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="/"><span class="wp-block-navigation-item__label">Home</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="/profile"><span class="wp-block-navigation-item__label">Profile</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="/journal"><span class="wp-block-navigation-item__label">Journal</span></a></li></ul>
+							</div>
+						</div>
+					</div>
+				</div></nav>
+
+<h1 style="font-style:normal;font-weight:700;" class="has-link-color wp-elements-64f06cefa222ed28fe860a2daefde5a6 wp-block-site-title has-text-color has-contrast-color has-heading-1-font-size"><a href="https://behramulukir.github.io" target="_self" rel="home">Behram Ulukır</a></h1></div>
+</div>
+</header>
+
+
+<main class="wp-block-group is-layout-flow wp-container-core-group-is-layout-777886d4 wp-block-group-is-layout-flow" style="margin-top:0px;margin-bottom:0px">
+<div class="wp-block-group alignwide has-global-padding is-layout-constrained wp-container-core-group-is-layout-a62636b3 wp-block-group-is-layout-constrained">
+<div class="wp-block-group alignwide is-layout-flow wp-container-core-group-is-layout-9a402448 wp-block-group-is-layout-flow"><h1 class="has-text-align-center wp-block-post-title">GSoC Diaries #8: Final Evaluation</h1>
+
+<div style="font-style:normal;font-weight:700;" class="has-text-align-center wp-block-post-date has-text-color has-primary-color has-heading-1-font-size"><time datetime="2025-08-31T19:08:22+03:00">August 31, 2025</time></div></div>
+
+
+<figure style="width:300px;height:300px; margin-top:56px;" class="alignwide wp-block-post-featured-image"><img width="281" height="281" src="https://behramulukir.github.io/wp-content/uploads/2025/06/GSoC_logo.svg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" style="height:300px;object-fit:cover;" decoding="async" fetchpriority="high"></figure></div>
+
+
+
+<div class="wp-block-group is-layout-flow wp-container-core-group-is-layout-4e3604a6 wp-block-group-is-layout-flow" style="margin-top:65px"><div style="border-style:none;border-width:0px; padding-top:0;padding-bottom:0;padding-left:15%;padding-right:15%; min-height:0px;" class="entry-content wp-block-post-content is-layout-flow wp-container-core-post-content-is-layout-4125e2a6 wp-block-post-content-is-layout-flow">
+<p>Hey,</p>
+
+
+
+<p>It was just a couple of months ago, on May 14, when I received an email asking if I still would be interested in working on Stan through the summer as part of Google Summer of Code, as I initially didn’t receive the funding. I said yes, and since then, my time has been full of learning, experimenting, and implementing. Working on<strong> </strong><em>bayesplot</em> was so much fun, which I plan to keep doing so even after Google Summer of Code, but now, it is time to close the chapter of GSoC formally.</p>
+
+
+
+<h5 class="wp-block-heading">Project Description</h5>
+
+
+
+<p>Quoting my project proposal, my time during Google Summer of Code was about working on <em>bayesplot</em> library under Stan:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The bayesplot package is a key tool in the Stan ecosystem for visualizing Bayesian analysis results. However, it currently lacks specialized visualizations for predictive checks of discrete and categorical outcomes, and some existing plots could be improved for better usability and accuracy. These limitations hinder researchers’ ability to thoroughly validate their models against real-world data, particularly for discrete and bounded data types. This project aims to expand and refine bayesplot by implementing new visualization techniques based on recommendations from Säilynoja et al<sup data-fn="275ba24b-2aa3-4406-a50d-0e8c40ec7b23" class="fn"><a href="#275ba24b-2aa3-4406-a50d-0e8c40ec7b23" id="275ba24b-2aa3-4406-a50d-0e8c40ec7b23-link">1</a></sup>. Deliverables: New plotting functions integrated into bayesplot (e.g., ppc_density_bounded, calibration plots). Enhanced versions of existing functions (e.g., rootograms, residual plots). Comprehensive documentation with examples and guides. Unit tests for robustness and edge cases. Blog posts tracking progress and showcasing new features. By the end of the project, bayesplot will offer a more versatile and user-friendly toolkit for Bayesian model checking, strengthening its role in the Stan community. These improvements will empower researchers to diagnose and communicate model fit more effectively, advancing Bayesian workflows across disciplines like machine learning, statistics, and data science.</p>
+</blockquote>
+
+
+
+<p>That’s what I pretty much did. I worked on <em>bayesplot</em> to enhance users’ experience of visualising Bayesian models, by adding new visualisation functions, updating the existing functions and adding new capabilities, and making sure that documentation is clear enough both for new users and people who are considering contributing to <em>bayesplot.</em> Let’s look at what I did, item by item.</p>
+
+
+
+<h5 class="wp-block-heading">My Progress</h5>
+
+
+
+<p>Of course, my time at GSoC started with exploring the codebase. Even though I used the <em>bayesplot</em> before, there is a difference between importing the package and calling functions from it and actually understanding what’s under the hood of those functions. During the community bonding period and also a bit during the first week of coding period -as I also had my final exams during the first week of June- I tried to understand how the codebase is formatted, what the general coding practices are, what is the appropriate language in documentation, and more. After that initial period, however, I started coding and implementing. Here is the list of what I did, what I am working on at the moment, and what is left to do.</p>
+
+
+
+<h6 class="wp-block-heading">Completed</h6>
+
+
+
+<ul class="wp-block-list">
+<li><strong>ppc_dots</strong> <strong>&</strong> <strong>ppd_dots</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/354" target="_blank" rel="noreferrer noopener">Issue #354</a> and <a href="https://github.com/stan-dev/bayesplot/pull/357" target="_blank" rel="noreferrer noopener">PR #357</a>): These newly added functions are for plotting the dot plots of results of Bayesian models. They were visualising the distribution of a variable by plotting dots at specific quantiles of the data. This was my first contribution to the <em>bayesplot</em>, and it took me a while to get it done. The reason I decided to go with this was that this task was pretty self-contained, and since it’s a completely new function, there was a smaller risk of breaking things. That being said, implementing a function from the ground up is a tough task for a new contributor, so it took a lot of back and forth between me and my mentors, especially Teemu and Jonah, for me to understand everything. For example, I wasn’t quite sure whether to use <em>geom_dots</em> or <em>ggdist_dots</em> under the hood of this function. Since <em>ggplot2</em> is automatically imported by <em>bayesplot</em>, <em>geom_dots</em> was a natural part of the package. However, it was limited in terms of its offerings. Many times, dots were overflowing or dots were getting sized wrongly and manipulating arguments provided by <em>geom_dots</em> wasn’t enough to prevent these issues. The only way that I could have fixed those issues while using <em>geom_dots</em> was by implementing a custom <em>geom</em>, which would have been quite complicated. On the other hand, <em>ggdist_dots</em> was simpler to use, and it didn’t have the issues that <em>geom_dots</em> had. However, using <em>ggdist_dots</em> meant adding another dependency to the package, which I was hesitant about. After discussing, we decided that <em>ggdist</em> can be added to the suggested packages list and at the beginning of <em>ppc_dots</em> and <em>ppd_dots</em>, there would be a check to see if <em>ggdist</em> is installed. This worked perfectly, and my implementation, along with the documentation and testing, got merged into the main branch.</li>
+
+
+
+<li><strong>ppc_error_binned(x)</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/358" target="_blank" rel="noreferrer noopener">Issue #358</a> and <a href="https://github.com/stan-dev/bayesplot/pull/359" target="_blank" rel="noreferrer noopener">PR #359</a>): This task started based on Teemu’s idea that current offerings of <em>bayesplot</em> for discrete data can be enhanced (<a href="https://github.com/stan-dev/bayesplot/issues/343" target="_blank" rel="noreferrer noopener">issue #343</a>). He made multiple suggestions that later led to greater discussions, but one point that he made was the fact that <em>ppc_error_binned</em> doesn’t currently support covariates on the x-axis. To solve that, adding an optional <em>x</em> argument to <em>ppc_error_binned</em>, which would work similarly to <em>ppc_interval</em>, made sense. That way, users will have the ability to plot residuals against <em>x</em>, but since it’s optional, this change wouldn’t break any existing plots. This task was my second, and in all fairness, it was quite simpler compared to adding completely new plots. After all, what this update did was add an optional parameter that, if anything is passed to it, it would get passed rightly into the helper function, which does the actual plotting. So, adding an if-else branching, implementing some tests and updating the documentation sufficed.</li>
+
+
+
+<li><strong>ppc_rootogram(style = “discrete”)</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/360" target="_blank" rel="noreferrer noopener">Issue #360</a> and <a href="https://github.com/stan-dev/bayesplot/pull/362" target="_blank" rel="noreferrer noopener">PR #362</a>): In their paper, Säilynoja et al suggested that visual styles that are currently offered by <em>ppc_rootogram</em> are not suitable for the data that the function visualises. Even though the function is designed to plot discrete data points, all of the visual elements that it uses have continuity. Lines, histograms, and filled areas, all these visual elements are signalling continuity in the data. Therefore, an alternative style is needed. The suggestion in the paper was a new style that uses points and point ranges, making sure that the user is confident about the discrete nature of the data. We had lots of discussions about the colouring of the visual items, what visual style we need to follow, and more, all of which I shared in my biweekly diary entries. However, the main challenge in this task was preserving the old styles and implementing a new style, and doing all of this neatly and not turning the code into spaghetti. Especially considering that old styles and the new style had almost no common point, it wasn’t an easy task, to be honest. After my first working implementation of the function, I was given feedback that this function needs to be refactored and split into helper functions since the version that I presented would be hard to maintain. It was fair feedback and got me back to work. I rewrote the code, this time in a clearer manner. It finally got approved and merged into the main branch, and we hope to gather some feedback from the users to further enhance it.</li>
+
+
+
+<li><strong>ppc_error_scatter_avg(x = x)</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/364" target="_blank" rel="noreferrer noopener">Issue #364</a> and <a href="https://github.com/stan-dev/bayesplot/pull/367" target="_blank" rel="noreferrer noopener">PR #367</a>): We decided that to reduce the number of available functions and have a smoother user experience, it made sense to combine <em>ppc_error_scatter_avg</em> and <em>ppc_error_scatter_avg_vs_x</em>. The simple idea behind this is that these two functions are fairly similar, and all <em>ppc_error_scatter_avg_vs_x</em> does is format the <em>x</em> variable appropriately and then call <em>ppc_error_scatter_avg</em>. With this change, if a vector is passed to the optional x argument of <em>ppc_error_scatter_avg</em>, then the average of the errors computed from y and each dataset (row) in yrep can be plotted against that <em>x</em>. Otherwise, the average of errors will be plotted against <em>y</em>. This simply meant that now, the same function is able to do two tasks that were previously done by two separate functions and at the same time maintains the ease of use that <em>bayesplot</em> really cares about.</li>
+
+
+
+<li><strong>ppc_stat(discrete) & ppd_stat(discrete)</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/330" target="_blank" rel="noreferrer noopener">Issue #330</a> and <a href="https://github.com/stan-dev/bayesplot/pull/369" target="_blank" rel="noreferrer noopener">PR #369</a>): One user of <em>bayesplot</em> voiced a frustration related to test statistics functions provided by <em>bayesplot</em>. The issue was that in <em>ppc_stat</em> and <em>ppd_stat</em> -also in their grouped versions- the data is plotted by histograms. This is fine if you work with continuous data, which can be visualised nicely by histograms. However, in discrete datasets, histograms look ugly and aren’t really appropriate. Even though it wasn’t in my task list, I decided to take on this task because to me, it seemed that this request from a user seemed more important than the other tasks I had left in my task list. Therefore, I updated the <em>ppc_stat</em>, <em>ppd_stat</em>, <em>ppc_stat_grouped</em>, and <em>ppd_stat_grouped</em> to make sure that they call <em>geom_bar</em> instead of <em>geom_histogram</em> if the <em>discrete</em> argument is set to true. Otherwise, functions kept working the same.</li>
+
+
+
+<li><strong>Admin work – New Contributors</strong>  (<a href="https://github.com/stan-dev/bayesplot/issues/365" target="_blank" rel="noreferrer noopener">Issue #365</a> and <a href="https://github.com/stan-dev/bayesplot/issues/366" target="_blank" rel="noreferrer noopener">Issue #366</a>): I also went ahead and did some admin work! Since I began to explore the codebase, I noticed small errors here and there. There was already a label for issues that are suitable for new contributors; however, we decided that it would be even better if we gathered them under a master issue, where new contributors can go and pick a task. I did that, and on top of it, created another issue that is suitable for new contributors, highlighting little mistakes made in the tests and documentation of <em>ppc-discrete</em>. In <em>bayesplot</em>, the threshold of contribution is lower than many other R packages, but I hope this master issue will make it even lower, welcoming everyone with open arms who wants to be part of the Stan community.</li>
+
+
+
+<li><strong>Admin Work – Residual Plots</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/361" target="_blank" rel="noreferrer noopener">Issue #361</a>): As I said before, Teemu had multiple ideas to make error/residual plots offered by <em>bayesplot</em> better; however, doing them would require a comprehensive work, one that goes beyond the scope of this GSoC project. That being said, we still had discussions about this in Slack and in a meeting that all of my mentors and I attended. After that meeting, we decided that it would be good to gather our thoughts to see the bigger picture and plan things better. So, I went ahead and dug up our Slack messages, open issues, existing PRs, and, of course, the paper by Säilynoja et al. to see what kind of suggestions exist for error/residual plots. This issue is a result of that work, gathering all the ideas, and providing a clear picture regarding the implementation of enhanced error/residual plots.</li>
+</ul>
+
+
+
+<h6 class="wp-block-heading">In Progress</h6>
+
+
+
+<ul class="wp-block-list">
+<li><strong>ppc_residual_scatter</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/358" target="_blank" rel="noreferrer noopener">Issue #358</a> and <a href="https://github.com/stan-dev/bayesplot/pull/368" target="_blank" rel="noreferrer noopener">PR #368</a>): Currently, the error plots existing in <em>bayesplot</em> calculate the errors of a model by <em>stat(y – yrep)</em>. The idea of implementing a function that would plot <em>y – stat(yrep)</em> instead of <em>stat(y – yrep)</em> has existed for some time, scattered through different issues and PRs with concurrent discussions. However, the gist of them all was the need for an alternative function to plot errors differently. We decided that it would be best to call this new kind of function <em>residual</em> functions instead of <em>error</em> functions due to their having a different way of calculating the errors. To turn this idea into an implementation, I made a draft PR, which I wasn’t completely sure about, nor were my mentors. Therefore, we decided to slow down this a bit and have a meeting to discuss the future of this alternative kind of error plots in a more detailed way.</li>
+</ul>
+
+
+
+<h6 class="wp-block-heading">In Future</h6>
+
+
+
+<ul class="wp-block-list">
+<li><strong>adding <em>bounds</em> to density plots </strong>(<a href="https://github.com/stan-dev/bayesplot/issues/317" target="_blank" rel="noreferrer noopener">Issue #317</a>): The only task item from my list that I haven’t started implementing at all was this task. This task is about adding <em>bounds</em> argument to all plots -there are 10 of them- which are very good at plotting density plots when the data is smooth and unbounded, however, have problems when the dataset is bounded. These functions utilise <em>geom_bounds</em> and <em>stat_bounds</em> under the hood, which have their own ways of handling bounded data, so it is possible to build on top of their structure to provide enhanced plotting capabilities to users. This is something that I plan to work on in the future.</li>
+</ul>
+
+
+
+<p>Here are some additional links where you can check all of my activity at <em>bayesplot</em> GitHub repository:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://github.com/stan-dev/bayesplot/issues?q=is%3Aissue%20author%3Abehramulukir">Issues</a></li>
+
+
+
+<li><a href="https://github.com/stan-dev/bayesplot/pulls?q=+is%3Apr+author%3Abehramulukir+">Pull Requests</a></li>
+
+
+
+<li><a href="https://github.com/stan-dev/bayesplot/commits/master/?author=behramulukir">Commits</a></li>
+</ul>
+
+
+
+<h5 class="wp-block-heading">Conclusion</h5>
+
+
+
+<p>Looking back, I can confidently say that applying for Google Summer of Code was an awesome decision. I enjoyed it so much; it was so fun to explore the codebase, implement new functions, learn about the general software development practices, as well as open source software development practices. I am committed to staying with <em>bayesplot</em> after the official end of GSoC, and we are already talking about what to do next. For all of this, I am grateful to my mentors, Teemu Säilynoja, Jonah Gabry, and Aki Vehtari, for their continuous support. I learnt a lot from them and they answered all of my questions, regardless of how basic and simple they are, and I felt so well and relieved whenever we met or discussed things on Slack, knowing that I have people that I can openly ask things. It was a pleasure to work with them!</p>
+
+
+
+<p>I also thank GSoC for introducing me to the open source community. I didn’t have a single commit in an open source project before, but now whenever I come across a public library on GitHub, I check issues to see if there is anything I can quickly implement and help maintainers. I already made <a href="https://github.com/paul-buerkner/brms/pull/1813" target="_blank" rel="noreferrer noopener">my first commit</a> to <em>brms</em>, a package that provides an interface to fit Bayesian generalized (non-)linear multivariate multilevel models using Stan. I remember reading that one of the important goals of GSoC is introducing students to the open source community so that there are more open source contributors and projects in the future. It’s easy to say that it achieves that goal extremely well.</p>
+
+
+<ol class="wp-block-footnotes"><li id="275ba24b-2aa3-4406-a50d-0e8c40ec7b23">Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a href="https://arxiv.org/abs/2503.01509">https://arxiv.org/abs/2503.01509</a> <a href="#275ba24b-2aa3-4406-a50d-0e8c40ec7b23-link" aria-label="Jump to footnote reference 1">↩︎</a></li></ol></div>
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-container-core-group-is-layout-6141fbbf wp-block-group-is-layout-constrained">
+<div class="wp-block-group has-primary-color has-text-color has-small-font-size is-vertical is-content-justification-left is-nowrap is-layout-flex wp-container-core-group-is-layout-5dbaebb5 wp-block-group-is-layout-flex">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-27bff3d2 wp-block-group-is-layout-flex">
+<p>In</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><a href="https://behramulukir.github.io/category/gsoc-diaries/" rel="tag">GSoC Diaries</a></div></div>
+
+
+<div class="taxonomy-post_tag wp-block-post-terms"><a href="https://behramulukir.github.io/tag/bayesplot/" rel="tag">Bayesplot</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/google-summer-of-code/" rel="tag">Google Summer of Code</a><span class="wp-block-post-terms__separator">, </span><a href="https://behramulukir.github.io/tag/stan/" rel="tag">Stan</a></div></div>
+</div>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><nav class="alignwide is-style-beaumont-vertical-separators wp-block-query-pagination is-vertical is-content-justification-space-between is-layout-flex wp-container-core-query-pagination-is-layout-2f00920f wp-block-query-pagination-is-layout-flex" aria-label="Pagination">
+<div style="font-style:normal;" class="post-navigation-link-previous wp-block-post-navigation-link"><a href="https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/" rel="prev">GSoC Diaries #7: Code Refactoring</a></div>
+
+<div style="font-style:normal;" class="post-navigation-link-next wp-block-post-navigation-link"></div>
+</nav></div>
+</main>
+
+
+<footer class="site-footer wp-block-template-part">
+<div class="wp-block-group alignfull has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:0px;padding-top:var(--wp--preset--spacing--40)">
+<div class="wp-block-group alignwide is-content-justification-center is-layout-flex wp-container-core-group-is-layout-24a9dfa4 wp-block-group-is-layout-flex" style="margin-top:0px">
+<p class="has-text-align-center">© 2025</p>
+
+
+
+<p class="theme-credit has-primary-color has-text-color"><a href="https://andersnoren.se"><br></a></p>
+</div>
+</div>
+</footer></div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/beaumont\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="wp-block-template-skip-link-js-after">
+	( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.id = 'wp-skip-link';
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerText = 'Skip to content';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );
+	
+</script>
+</body>
+</html>

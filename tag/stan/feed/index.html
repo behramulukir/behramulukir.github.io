@@ -12,7 +12,7 @@
 	<atom:link href="https://behramulukir.github.io/tag/stan/feed/" rel="self" type="application/rss+xml" />
 	<link>http://behramulukir.github.io/</link>
 	<description></description>
-	<lastBuildDate>Tue, 26 Aug 2025 11:19:53 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 31 Aug 2025 16:08:22 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,6 +20,145 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=6.8.2</generator>
 	<item>
+		<title>GSoC Diaries #8: Final Evaluation</title>
+		<link>https://behramulukir.github.io/gsoc-diaries-8-final-evaluation/</link>
+					<comments>https://behramulukir.github.io/gsoc-diaries-8-final-evaluation/#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 31 Aug 2025 16:08:22 +0000</pubDate>
+				<category><![CDATA[GSoC Diaries]]></category>
+		<category><![CDATA[Bayesplot]]></category>
+		<category><![CDATA[Google Summer of Code]]></category>
+		<category><![CDATA[Stan]]></category>
+		<guid isPermaLink="false">https://behramulukir.github.io/?p=832</guid>
+
+					<description><![CDATA[Hey, It was just a couple of months ago, on May 14, when I received an email asking if I still would be interested in working on Stan through the summer as part of Google Summer of Code, as I initially didn&#8217;t receive the funding. I said yes, and since then, my time has been [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hey,</p>
+
+
+
+<p>It was just a couple of months ago, on May 14, when I received an email asking if I still would be interested in working on Stan through the summer as part of Google Summer of Code, as I initially didn&#8217;t receive the funding. I said yes, and since then, my time has been full of learning, experimenting, and implementing. Working on<strong> </strong><em>bayesplot</em> was so much fun, which I plan to keep doing so even after Google Summer of Code, but now, it is time to close the chapter of GSoC formally.</p>
+
+
+
+<h5 class="wp-block-heading">Project Description</h5>
+
+
+
+<p>Quoting my project proposal, my time during Google Summer of Code was about working on <em>bayesplot</em> library under Stan:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The bayesplot package is a key tool in the Stan ecosystem for visualizing Bayesian analysis results. However, it currently lacks specialized visualizations for predictive checks of discrete and categorical outcomes, and some existing plots could be improved for better usability and accuracy. These limitations hinder researchers&#8217; ability to thoroughly validate their models against real-world data, particularly for discrete and bounded data types. This project aims to expand and refine bayesplot by implementing new visualization techniques based on recommendations from Säilynoja et al<sup data-fn="275ba24b-2aa3-4406-a50d-0e8c40ec7b23" class="fn"><a href="#275ba24b-2aa3-4406-a50d-0e8c40ec7b23" id="275ba24b-2aa3-4406-a50d-0e8c40ec7b23-link">1</a></sup>. Deliverables: New plotting functions integrated into bayesplot (e.g., ppc_density_bounded, calibration plots). Enhanced versions of existing functions (e.g., rootograms, residual plots). Comprehensive documentation with examples and guides. Unit tests for robustness and edge cases. Blog posts tracking progress and showcasing new features. By the end of the project, bayesplot will offer a more versatile and user-friendly toolkit for Bayesian model checking, strengthening its role in the Stan community. These improvements will empower researchers to diagnose and communicate model fit more effectively, advancing Bayesian workflows across disciplines like machine learning, statistics, and data science.</p>
+</blockquote>
+
+
+
+<p>That&#8217;s what I pretty much did. I worked on <em>bayesplot</em> to enhance users&#8217; experience of visualising Bayesian models, by adding new visualisation functions, updating the existing functions and adding new capabilities, and making sure that documentation is clear enough both for new users and people who are considering contributing to <em>bayesplot.</em> Let&#8217;s look at what I did, item by item.</p>
+
+
+
+<h5 class="wp-block-heading">My Progress</h5>
+
+
+
+<p>Of course, my time at GSoC started with exploring the codebase. Even though I used the <em>bayesplot</em> before, there is a difference between importing the package and calling functions from it and actually understanding what&#8217;s under the hood of those functions. During the community bonding period and also a bit during the first week of coding period -as I also had my final exams during the first week of June- I tried to understand how the codebase is formatted, what the general coding practices are, what is the appropriate language in documentation, and more. After that initial period, however, I started coding and implementing. Here is the list of what I did, what I am working on at the moment, and what is left to do.</p>
+
+
+
+<h6 class="wp-block-heading">Completed</h6>
+
+
+
+<ul class="wp-block-list">
+<li><strong>ppc_dots</strong> <strong>&amp;</strong> <strong>ppd_dots</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/354" target="_blank" rel="noreferrer noopener">Issue #354</a> and <a href="https://github.com/stan-dev/bayesplot/pull/357" target="_blank" rel="noreferrer noopener">PR #357</a>): These newly added functions are for plotting the dot plots of results of Bayesian models. They were visualising the distribution of a variable by plotting dots at specific quantiles of the data. This was my first contribution to the <em>bayesplot</em>, and it took me a while to get it done. The reason I decided to go with this was that this task was pretty self-contained, and since it&#8217;s a completely new function, there was a smaller risk of breaking things. That being said, implementing a function from the ground up is a tough task for a new contributor, so it took a lot of back and forth between me and my mentors, especially Teemu and Jonah, for me to understand everything. For example, I wasn&#8217;t quite sure whether to use <em>geom_dots</em> or <em>ggdist_dots</em> under the hood of this function. Since <em>ggplot2</em> is automatically imported by <em>bayesplot</em>, <em>geom_dots</em> was a natural part of the package. However, it was limited in terms of its offerings. Many times, dots were overflowing or dots were getting sized wrongly and manipulating arguments provided by <em>geom_dots</em> wasn&#8217;t enough to prevent these issues. The only way that I could have fixed those issues while using <em>geom_dots</em> was by implementing a custom <em>geom</em>, which would have been quite complicated. On the other hand, <em>ggdist_dots</em> was simpler to use, and it didn&#8217;t have the issues that <em>geom_dots</em> had. However, using <em>ggdist_dots</em> meant adding another dependency to the package, which I was hesitant about. After discussing, we decided that <em>ggdist</em> can be added to the suggested packages list and at the beginning of <em>ppc_dots</em> and <em>ppd_dots</em>, there would be a check to see if <em>ggdist</em> is installed. This worked perfectly, and my implementation, along with the documentation and testing, got merged into the main branch.</li>
+
+
+
+<li><strong>ppc_error_binned(x)</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/358" target="_blank" rel="noreferrer noopener">Issue #358</a> and <a href="https://github.com/stan-dev/bayesplot/pull/359" target="_blank" rel="noreferrer noopener">PR #359</a>): This task started based on Teemu&#8217;s idea that current offerings of <em>bayesplot</em> for discrete data can be enhanced (<a href="https://github.com/stan-dev/bayesplot/issues/343" target="_blank" rel="noreferrer noopener">issue #343</a>). He made multiple suggestions that later led to greater discussions, but one point that he made was the fact that <em>ppc_error_binned</em> doesn&#8217;t currently support covariates on the x-axis. To solve that, adding an optional <em>x</em> argument to <em>ppc_error_binned</em>, which would work similarly to <em>ppc_interval</em>, made sense. That way, users will have the ability to plot residuals against <em>x</em>, but since it&#8217;s optional, this change wouldn&#8217;t break any existing plots. This task was my second, and in all fairness, it was quite simpler compared to adding completely new plots. After all, what this update did was add an optional parameter that, if anything is passed to it, it would get passed rightly into the helper function, which does the actual plotting. So, adding an if-else branching, implementing some tests and updating the documentation sufficed.</li>
+
+
+
+<li><strong>ppc_rootogram(style = &#8220;discrete&#8221;)</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/360" target="_blank" rel="noreferrer noopener">Issue #360</a> and <a href="https://github.com/stan-dev/bayesplot/pull/362" target="_blank" rel="noreferrer noopener">PR #362</a>): In their paper, Säilynoja et al suggested that visual styles that are currently offered by <em>ppc_rootogram</em> are not suitable for the data that the function visualises. Even though the function is designed to plot discrete data points, all of the visual elements that it uses have continuity. Lines, histograms, and filled areas, all these visual elements are signalling continuity in the data. Therefore, an alternative style is needed. The suggestion in the paper was a new style that uses points and point ranges, making sure that the user is confident about the discrete nature of the data. We had lots of discussions about the colouring of the visual items, what visual style we need to follow, and more, all of which I shared in my biweekly diary entries. However, the main challenge in this task was preserving the old styles and implementing a new style, and doing all of this neatly and not turning the code into spaghetti. Especially considering that old styles and the new style had almost no common point, it wasn&#8217;t an easy task, to be honest. After my first working implementation of the function, I was given feedback that this function needs to be refactored and split into helper functions since the version that I presented would be hard to maintain. It was fair feedback and got me back to work. I rewrote the code, this time in a clearer manner. It finally got approved and merged into the main branch, and we hope to gather some feedback from the users to further enhance it.</li>
+
+
+
+<li><strong>ppc_error_scatter_avg(x = x)</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/364" target="_blank" rel="noreferrer noopener">Issue #364</a> and <a href="https://github.com/stan-dev/bayesplot/pull/367" target="_blank" rel="noreferrer noopener">PR #367</a>): We decided that to reduce the number of available functions and have a smoother user experience, it made sense to combine <em>ppc_error_scatter_avg</em> and <em>ppc_error_scatter_avg_vs_x</em>. The simple idea behind this is that these two functions are fairly similar, and all <em>ppc_error_scatter_avg_vs_x</em> does is format the <em>x</em> variable appropriately and then call <em>ppc_error_scatter_avg</em>. With this change, if a vector is passed to the optional x argument of <em>ppc_error_scatter_avg</em>, then the average of the errors computed from y and each dataset (row) in yrep can be plotted against that <em>x</em>. Otherwise, the average of errors will be plotted against <em>y</em>. This simply meant that now, the same function is able to do two tasks that were previously done by two separate functions and at the same time maintains the ease of use that <em>bayesplot</em> really cares about.</li>
+
+
+
+<li><strong>ppc_stat(discrete) &amp; ppd_stat(discrete)</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/330" target="_blank" rel="noreferrer noopener">Issue #330</a> and <a href="https://github.com/stan-dev/bayesplot/pull/369" target="_blank" rel="noreferrer noopener">PR #369</a>): One user of <em>bayesplot</em> voiced a frustration related to test statistics functions provided by <em>bayesplot</em>. The issue was that in <em>ppc_stat</em> and <em>ppd_stat</em> -also in their grouped versions- the data is plotted by histograms. This is fine if you work with continuous data, which can be visualised nicely by histograms. However, in discrete datasets, histograms look ugly and aren&#8217;t really appropriate. Even though it wasn&#8217;t in my task list, I decided to take on this task because to me, it seemed that this request from a user seemed more important than the other tasks I had left in my task list. Therefore, I updated the <em>ppc_stat</em>, <em>ppd_stat</em>, <em>ppc_stat_grouped</em>, and <em>ppd_stat_grouped</em> to make sure that they call <em>geom_bar</em> instead of <em>geom_histogram</em> if the <em>discrete</em> argument is set to true. Otherwise, functions kept working the same.</li>
+
+
+
+<li><strong>Admin work &#8211; New Contributors</strong>  (<a href="https://github.com/stan-dev/bayesplot/issues/365" target="_blank" rel="noreferrer noopener">Issue #365</a> and <a href="https://github.com/stan-dev/bayesplot/issues/366" target="_blank" rel="noreferrer noopener">Issue #366</a>): I also went ahead and did some admin work! Since I began to explore the codebase, I noticed small errors here and there. There was already a label for issues that are suitable for new contributors; however, we decided that it would be even better if we gathered them under a master issue, where new contributors can go and pick a task. I did that, and on top of it, created another issue that is suitable for new contributors, highlighting little mistakes made in the tests and documentation of <em>ppc-discrete</em>. In <em>bayesplot</em>, the threshold of contribution is lower than many other R packages, but I hope this master issue will make it even lower, welcoming everyone with open arms who wants to be part of the Stan community.</li>
+
+
+
+<li><strong>Admin Work &#8211; Residual Plots</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/361" target="_blank" rel="noreferrer noopener">Issue #361</a>): As I said before, Teemu had multiple ideas to make error/residual plots offered by <em>bayesplot</em> better; however, doing them would require a comprehensive work, one that goes beyond the scope of this GSoC project. That being said, we still had discussions about this in Slack and in a meeting that all of my mentors and I attended. After that meeting, we decided that it would be good to gather our thoughts to see the bigger picture and plan things better. So, I went ahead and dug up our Slack messages, open issues, existing PRs, and, of course, the paper by Säilynoja et al. to see what kind of suggestions exist for error/residual plots. This issue is a result of that work, gathering all the ideas, and providing a clear picture regarding the implementation of enhanced error/residual plots.</li>
+</ul>
+
+
+
+<h6 class="wp-block-heading">In Progress</h6>
+
+
+
+<ul class="wp-block-list">
+<li><strong>ppc_residual_scatter</strong> (<a href="https://github.com/stan-dev/bayesplot/issues/358" target="_blank" rel="noreferrer noopener">Issue #358</a> and <a href="https://github.com/stan-dev/bayesplot/pull/368" target="_blank" rel="noreferrer noopener">PR #368</a>): Currently, the error plots existing in <em>bayesplot</em> calculate the errors of a model by <em>stat(y &#8211; yrep)</em>. The idea of implementing a function that would plot <em>y &#8211; stat(yrep)</em> instead of <em>stat(y &#8211; yrep)</em> has existed for some time, scattered through different issues and PRs with concurrent discussions. However, the gist of them all was the need for an alternative function to plot errors differently. We decided that it would be best to call this new kind of function <em>residual</em> functions instead of <em>error</em> functions due to their having a different way of calculating the errors. To turn this idea into an implementation, I made a draft PR, which I wasn&#8217;t completely sure about, nor were my mentors. Therefore, we decided to slow down this a bit and have a meeting to discuss the future of this alternative kind of error plots in a more detailed way.</li>
+</ul>
+
+
+
+<h6 class="wp-block-heading">In Future</h6>
+
+
+
+<ul class="wp-block-list">
+<li><strong>adding <em>bounds</em> to density plots </strong>(<a href="https://github.com/stan-dev/bayesplot/issues/317" target="_blank" rel="noreferrer noopener">Issue #317</a>): The only task item from my list that I haven&#8217;t started implementing at all was this task. This task is about adding <em>bounds</em> argument to all plots -there are 10 of them- which are very good at plotting density plots when the data is smooth and unbounded, however, have problems when the dataset is bounded. These functions utilise <em>geom_bounds</em> and <em>stat_bounds</em> under the hood, which have their own ways of handling bounded data, so it is possible to build on top of their structure to provide enhanced plotting capabilities to users. This is something that I plan to work on in the future.</li>
+</ul>
+
+
+
+<p>Here are some additional links where you can check all of my activity at <em>bayesplot</em> GitHub repository:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://github.com/stan-dev/bayesplot/issues?q=is%3Aissue%20author%3Abehramulukir">Issues</a></li>
+
+
+
+<li><a href="https://github.com/stan-dev/bayesplot/pulls?q=+is%3Apr+author%3Abehramulukir+">Pull Requests</a></li>
+
+
+
+<li><a href="https://github.com/stan-dev/bayesplot/commits/master/?author=behramulukir">Commits</a></li>
+</ul>
+
+
+
+<h5 class="wp-block-heading">Conclusion</h5>
+
+
+
+<p>Looking back, I can confidently say that applying for Google Summer of Code was an awesome decision. I enjoyed it so much; it was so fun to explore the codebase, implement new functions, learn about the general software development practices, as well as open source software development practices. I am committed to staying with <em>bayesplot</em> after the official end of GSoC, and we are already talking about what to do next. For all of this, I am grateful to my mentors, Teemu Säilynoja, Jonah Gabry, and Aki Vehtari, for their continuous support. I learnt a lot from them and they answered all of my questions, regardless of how basic and simple they are, and I felt so well and relieved whenever we met or discussed things on Slack, knowing that I have people that I can openly ask things. It was a pleasure to work with them!</p>
+
+
+
+<p>I also thank GSoC for introducing me to the open source community. I didn&#8217;t have a single commit in an open source project before, but now whenever I come across a public library on GitHub, I check issues to see if there is anything I can quickly implement and help maintainers. I already made <a href="https://github.com/paul-buerkner/brms/pull/1813" target="_blank" rel="noreferrer noopener">my first commit</a> to <em>brms</em>, a package that provides an interface to fit Bayesian generalized (non-)linear multivariate multilevel models using Stan. I remember reading that one of the important goals of GSoC is introducing students to the open source community so that there are more open source contributors and projects in the future. It&#8217;s easy to say that it achieves that goal extremely well.</p>
+
+
+<ol class="wp-block-footnotes"><li id="275ba24b-2aa3-4406-a50d-0e8c40ec7b23">Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a href="https://arxiv.org/abs/2503.01509">https://arxiv.org/abs/2503.01509</a> <a href="#275ba24b-2aa3-4406-a50d-0e8c40ec7b23-link" aria-label="Jump to footnote reference 1"><img src="https://s.w.org/images/core/emoji/16.0.1/72x72/21a9.png" alt="↩" class="wp-smiley" style="height: 1em; max-height: 1em;" />︎</a></li></ol>]]></content:encoded>
+					
+					<wfw:commentRss>https://behramulukir.github.io/gsoc-diaries-8-final-evaluation/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>GSoC Diaries #7: Code Refactoring</title>
 		<link>https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/</link>
 					<comments>https://behramulukir.github.io/gsoc-diaries-7-code-refactoring/#respond</comments>
