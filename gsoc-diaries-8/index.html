@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<title>
+  GSoC Diaries #8: Final Evaluation | Behram Ulukır
+</title>
+ 
+<link rel="canonical" href="https://behramulukir.github.io/gsoc-diaries-8/" />
+
+
+<meta property="og:title" content="GSoC Diaries #8: Final Evaluation" />
+
+<meta
+  property="og:type"
+  content="article"
+/>
+<meta property="og:url" content="https://behramulukir.github.io/gsoc-diaries-8/" />
+ 
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="GSoC Diaries #8: Final Evaluation" />
+      
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GSoC Diaries #8: Final Evaluation",
+    "url": "https:\/\/behramulukir.github.io\/gsoc-diaries-8\/",
+    "datePublished": "2025-08-31T16:08:22Z",
+    "dateModified": "2025-08-31T16:08:22Z"
+  }
+</script>
+  
+      <link rel="stylesheet" href="/css/main.min.2dde33969d4d5e378a33b00cb356d9d5b3b4ec0c6e8614348db13632ec0c1df4.css" integrity="sha256-Ld4zlp1NXjeKM7AMs1bZ1bO07AxuhhQ0jbE2MuwMHfQ=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/custom.min.c835eafcd0d85c7ef378c05dc7fecc867171adaa0b6293f202ba5aaec99847a6.css" integrity="sha256-yDXq/NDYXH7zeMBdx/7MhnFxraoLYpPyArparsmYR6Y=" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <header role="banner"><nav class="path-nav" aria-label="Breadcrumb">
+  <ol>
+    
+  
+    
+  
+    
+  
+  <li>
+    /
+    <a href="/">Behram Ulukır</a>
+    /
+  </li>
+
+  
+  <li>
+    
+    <a href="/journal/">Journal</a>
+    /
+  </li>
+
+  
+  <li class="current">
+    
+    <a href="/gsoc-diaries-8/">GSoC Diaries #8: Final Evaluation</a>
+    
+  </li>
+
+  </ol>
+</nav>
+
+
+
+</header>
+    <main id="main-content" role="main">
+  <h1>GSoC Diaries #8: Final Evaluation</h1>
+  
+  <div class="terms-list">
+    <ul>
+        <li><a href="/tags/bayes/">#Bayes</a></li>
+        <li><a href="/tags/google-summer-of-code/">#Google Summer of Code</a></li>
+        <li><a href="/tags/stan/">#Stan</a></li>
+    </ul>
+  </div>
+
+
+  
+  
+  
+  
+    <nav class="toc">
+      <strong>Table of contents</strong>
+      <div class="toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#project-description">Project Description</a></li>
+    <li><a href="#my-progress">My Progress</a>
+      <ul>
+        <li><a href="#completed">Completed</a></li>
+        <li><a href="#in-progress">In Progress</a></li>
+        <li><a href="#in-future">In Future</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+      </div>
+    </nav>
+  
+
+   
+   <p>Hey,</p>
+<p>It was just a couple of months ago, on May 14, when I received an email asking if I still would be interested in working on Stan through the summer as part of Google Summer of Code, as I initially didn&rsquo;t receive the funding. I said yes, and since then, my time has been full of learning, experimenting, and implementing. Working on <code>bayesplot</code> was so much fun, which I plan to keep doing so even after Google Summer of Code, but now, it is time to close the chapter of GSoC formally.</p>
+<h2 id="project-description">Project Description</h2>
+<p>Quoting my project proposal, my time during Google Summer of Code was about working on <code>bayesplot</code> library under Stan:</p>
+<blockquote>
+<p>The bayesplot package is a key tool in the Stan ecosystem for visualizing Bayesian analysis results. However, it currently lacks specialized visualizations for predictive checks of discrete and categorical outcomes, and some existing plots could be improved for better usability and accuracy. These limitations hinder researchers&rsquo; ability to thoroughly validate their models against real-world data, particularly for discrete and bounded data types. This project aims to expand and refine bayesplot by implementing new visualization techniques based on recommendations from Säilynoja et al<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Deliverables: New plotting functions integrated into bayesplot (e.g., ppc_density_bounded, calibration plots). Enhanced versions of existing functions (e.g., rootograms, residual plots). Comprehensive documentation with examples and guides. Unit tests for robustness and edge cases. Blog posts tracking progress and showcasing new features. By the end of the project, bayesplot will offer a more versatile and user-friendly toolkit for Bayesian model checking, strengthening its role in the Stan community. These improvements will empower researchers to diagnose and communicate model fit more effectively, advancing Bayesian workflows across disciplines like machine learning, statistics, and data science.</p>
+</blockquote>
+<p>That&rsquo;s what I pretty much did. I worked on <code>bayesplot</code> to enhance users&rsquo; experience of visualising Bayesian models, by adding new visualisation functions, updating the existing functions and adding new capabilities, and making sure that documentation is clear enough both for new users and people who are considering contributing to <code>bayesplot</code>. Let&rsquo;s look at what I did, item by item.</p>
+<h2 id="my-progress">My Progress</h2>
+<p>Of course, my time at GSoC started with exploring the codebase. Even though I used the <code>bayesplot</code> before, there is a difference between importing the package and calling functions from it and actually understanding what&rsquo;s under the hood of those functions. During the community bonding period and also a bit during the first week of coding period -as I also had my final exams during the first week of June- I tried to understand how the codebase is formatted, what the general coding practices are, what is the appropriate language in documentation, and more. After that initial period, however, I started coding and implementing. Here is the list of what I did, what I am working on at the moment, and what is left to do.</p>
+<h3 id="completed">Completed</h3>
+<ul>
+<li>
+<p><strong>ppc_dots</strong> <strong>&amp;</strong> <strong>ppd_dots</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/354"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #354
+	</span>
+
+</a> and <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/357"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		PR #357
+	</span>
+
+</a>): These newly added functions are for plotting the dot plots of results of Bayesian models. They were visualising the distribution of a variable by plotting dots at specific quantiles of the data. This was my first contribution to the <code>bayesplot</code>, and it took me a while to get it done. The reason I decided to go with this was that this task was pretty self-contained, and since it&rsquo;s a completely new function, there was a smaller risk of breaking things. That being said, implementing a function from the ground up is a tough task for a new contributor, so it took a lot of back and forth between me and my mentors, especially Teemu and Jonah, for me to understand everything. For example, I wasn&rsquo;t quite sure whether to use <code>geom_dots</code> or <code>ggdist_dots</code> under the hood of this function. Since <code>ggplot2</code> is automatically imported by <code>bayesplot</code>, <code>geom_dots</code> was a natural part of the package. However, it was limited in terms of its offerings. Many times, dots were overflowing or dots were getting sized wrongly and manipulating arguments provided by <code>geom_dots</code> wasn&rsquo;t enough to prevent these issues. The only way that I could have fixed those issues while using <code>geom_dots</code> was by implementing a custom <code>geom</code>, which would have been quite complicated. On the other hand, <code>ggdist_dots</code> was simpler to use, and it didn&rsquo;t have the issues that <code>geom_dots</code> had. However, using <code>ggdist_dots</code> meant adding another dependency to the package, which I was hesitant about. After discussing, we decided that <code>ggdist</code> can be added to the suggested packages list and at the beginning of <code>ppc_dots</code> and <code>ppd_dots</code>, there would be a check to see if <code>ggdist</code> is installed. This worked perfectly, and my implementation, along with the documentation and testing, got merged into the main branch.</p>
+</li>
+<li>
+<p><strong>ppc_error_binned(x)</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/358"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #358
+	</span>
+
+</a> and <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/359"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		PR #359
+	</span>
+
+</a>): This task started based on Teemu&rsquo;s idea that current offerings of <code>bayesplot</code> for discrete data can be enhanced (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/343"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		issue #343
+	</span>
+
+</a>). He made multiple suggestions that later led to greater discussions, but one point that he made was the fact that <code>ppc_error_binned</code> doesn&rsquo;t currently support covariates on the x-axis. To solve that, adding an optional <code>x</code> argument to <code>ppc_error_binned</code>, which would work similarly to <code>ppc_interval</code>, made sense. That way, users will have the ability to plot residuals against <code>x</code>, but since it&rsquo;s optional, this change wouldn&rsquo;t break any existing plots. This task was my second, and in all fairness, it was quite simpler compared to adding completely new plots. After all, what this update did was add an optional parameter that, if anything is passed to it, it would get passed rightly into the helper function, which does the actual plotting. So, adding an if-else branching, implementing some tests and updating the documentation sufficed.</p>
+</li>
+<li>
+<p><strong>ppc_rootogram(style = &ldquo;discrete&rdquo;)</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/360"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #360
+	</span>
+
+</a> and <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/362"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		PR #362
+	</span>
+
+</a>): In their paper, Säilynoja et al suggested that visual styles that are currently offered by <code>ppc_rootogram</code> are not suitable for the data that the function visualises. Even though the function is designed to plot discrete data points, all of the visual elements that it uses have continuity. Lines, histograms, and filled areas, all these visual elements are signalling continuity in the data. Therefore, an alternative style is needed. The suggestion in the paper was a new style that uses points and point ranges, making sure that the user is confident about the discrete nature of the data. We had lots of discussions about the colouring of the visual items, what visual style we need to follow, and more, all of which I shared in my biweekly diary entries. However, the main challenge in this task was preserving the old styles and implementing a new style, and doing all of this neatly and not turning the code into spaghetti. Especially considering that old styles and the new style had almost no common point, it wasn&rsquo;t an easy task, to be honest. After my first working implementation of the function, I was given feedback that this function needs to be refactored and split into helper functions since the version that I presented would be hard to maintain. It was fair feedback and got me back to work. I rewrote the code, this time in a clearer manner. It finally got approved and merged into the main branch, and we hope to gather some feedback from the users to further enhance it.</p>
+</li>
+<li>
+<p><strong>ppc_error_scatter_avg(x = x)</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/364"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #364
+	</span>
+
+</a> and <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/367"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		PR #367
+	</span>
+
+</a>): We decided that to reduce the number of available functions and have a smoother user experience, it made sense to combine <code>ppc_error_scatter_avg</code> and <code>ppc_error_scatter_avg_vs_x</code>. The simple idea behind this is that these two functions are fairly similar, and all <code>ppc_error_scatter_avg_vs_x</code> does is format the <code>x</code> variable appropriately and then call <code>ppc_error_scatter_avg</code>. With this change, if a vector is passed to the optional x argument of <code>ppc_error_scatter_avg</code>, then the average of the errors computed from y and each dataset (row) in yrep can be plotted against that <code>x</code>. Otherwise, the average of errors will be plotted against <code>y</code>. This simply meant that now, the same function is able to do two tasks that were previously done by two separate functions and at the same time maintains the ease of use that <code>bayesplot</code> really cares about.</p>
+</li>
+<li>
+<p><strong>ppc_stat(discrete) &amp; ppd_stat(discrete)</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/330"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #330
+	</span>
+
+</a> and <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/369"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		PR #369
+	</span>
+
+</a>): One user of <code>bayesplot</code> voiced a frustration related to test statistics functions provided by <code>bayesplot</code>. The issue was that in <code>ppc_stat</code> and <code>ppd_stat</code> -also in their grouped versions- the data is plotted by histograms. This is fine if you work with continuous data, which can be visualised nicely by histograms. However, in discrete datasets, histograms look ugly and aren&rsquo;t really appropriate. Even though it wasn&rsquo;t in my task list, I decided to take on this task because to me, it seemed that this request from a user seemed more important than the other tasks I had left in my task list. Therefore, I updated the <code>ppc_stat</code>, <code>ppd_stat</code>, <code>ppc_stat_grouped</code>, and <code>ppd_stat_grouped</code> to make sure that they call <code>geom_bar</code> instead of <code>geom_histogram</code> if the <code>discrete</code> argument is set to true. Otherwise, functions kept working the same.</p>
+</li>
+<li>
+<p><strong>Admin work - New Contributors</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/365"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #365
+	</span>
+
+</a> and <a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/366"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #366
+	</span>
+
+</a>): I also went ahead and did some admin work! Since I began to explore the codebase, I noticed small errors here and there. There was already a label for issues that are suitable for new contributors; however, we decided that it would be even better if we gathered them under a master issue, where new contributors can go and pick a task. I did that, and on top of it, created another issue that is suitable for new contributors, highlighting little mistakes made in the tests and documentation of <code>ppc-discrete</code>. In <code>bayesplot</code>, the threshold of contribution is lower than many other R packages, but I hope this master issue will make it even lower, welcoming everyone with open arms who wants to be part of the Stan community.</p>
+</li>
+<li>
+<p><strong>Admin Work - Residual Plots</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/361"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #361
+	</span>
+
+</a>): As I said before, Teemu had multiple ideas to make error/residual plots offered by <code>bayesplot</code> better; however, doing them would require a comprehensive work, one that goes beyond the scope of this GSoC project. That being said, we still had discussions about this in Slack and in a meeting that all of my mentors and I attended. After that meeting, we decided that it would be good to gather our thoughts to see the bigger picture and plan things better. So, I went ahead and dug up our Slack messages, open issues, existing PRs, and, of course, the paper by Säilynoja et al. to see what kind of suggestions exist for error/residual plots. This issue is a result of that work, gathering all the ideas, and providing a clear picture regarding the implementation of enhanced error/residual plots.</p>
+</li>
+</ul>
+<h3 id="in-progress">In Progress</h3>
+<ul>
+<li><strong>ppc_residual_scatter</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/358"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #358
+	</span>
+
+</a> and <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/368"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		PR #368
+	</span>
+
+</a>): Currently, the error plots existing in <code>bayesplot</code> calculate the errors of a model by <code>stat(y - yrep)</code>. The idea of implementing a function that would plot <code>y - stat(yrep)</code> instead of <code>stat(y - yrep)</code> has existed for some time, scattered through different issues and PRs with concurrent discussions. However, the gist of them all was the need for an alternative function to plot errors differently. We decided that it would be best to call this new kind of function <code>residual</code> functions instead of <code>error</code> functions due to their having a different way of calculating the errors. To turn this idea into an implementation, I made a draft PR, which I wasn&rsquo;t completely sure about, nor were my mentors. Therefore, we decided to slow down this a bit and have a meeting to discuss the future of this alternative kind of error plots in a more detailed way.</li>
+</ul>
+<h3 id="in-future">In Future</h3>
+<ul>
+<li><strong>adding <code>bounds</code> to density plots</strong> (<a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/317"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issue #317
+	</span>
+
+</a>): The only task item from my list that I haven&rsquo;t started implementing at all was this task. This task is about adding <code>bounds</code> argument to all plots -there are 10 of them- which are very good at plotting density plots when the data is smooth and unbounded, however, have problems when the dataset is bounded. These functions utilise <code>geom_bounds</code> and <code>stat_bounds</code> under the hood, which have their own ways of handling bounded data, so it is possible to build on top of their structure to provide enhanced plotting capabilities to users. This is something that I plan to work on in the future.</li>
+</ul>
+<p>Here are some additional links where you can check all of my activity at <code>bayesplot</code> GitHub repository:</p>
+<ul>
+<li><a
+
+		href = "https://github.com/stan-dev/bayesplot/issues?q=is%3Aissue%20author%3Abehramulukir"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Issues
+	</span>
+
+</a></li>
+<li><a
+
+		href = "https://github.com/stan-dev/bayesplot/pulls?q=&#43;is%3Apr&#43;author%3Abehramulukir&#43;"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Pull Requests
+	</span>
+
+</a></li>
+<li><a
+
+		href = "https://github.com/stan-dev/bayesplot/commits/master/?author=behramulukir"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Commits
+	</span>
+
+</a></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Looking back, I can confidently say that applying for Google Summer of Code was an awesome decision. I enjoyed it so much; it was so fun to explore the codebase, implement new functions, learn about the general software development practices, as well as open source software development practices. I am committed to staying with <code>bayesplot</code> after the official end of GSoC, and we are already talking about what to do next. For all of this, I am grateful to my mentors, Teemu Säilynoja, Jonah Gabry, and Aki Vehtari, for their continuous support. I learnt a lot from them and they answered all of my questions, regardless of how basic and simple they are, and I felt so well and relieved whenever we met or discussed things on Slack, knowing that I have people that I can openly ask things. It was a pleasure to work with them!</p>
+<p>I also thank GSoC for introducing me to the open source community. I didn&rsquo;t have a single commit in an open source project before, but now whenever I come across a public library on GitHub, I check issues to see if there is anything I can quickly implement and help maintainers. I already made <a
+
+		href = "https://github.com/paul-buerkner/brms/pull/1813"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		my first commit
+	</span>
+
+</a> to <code>brms</code>, a package that provides an interface to fit Bayesian generalized (non-)linear multivariate multilevel models using Stan. I remember reading that one of the important goals of GSoC is introducing students to the open source community so that there are more open source contributors and projects in the future. It&rsquo;s easy to say that it achieves that goal extremely well.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a
+
+		href = "https://arxiv.org/abs/2503.01509"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		https://arxiv.org/abs/2503.01509
+	</span>
+
+</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+   <div class="time">
+     <time datetime="2025-08-31">2025-08-31&nbsp;</time>
+
+     
+     
+       <span class="reading-time"> · 12 min read</span>
+     
+     
+     
+   </div>
+
+  
+  
+    <div class="comments">
+
+</div>
+  
+
+  
+    <div class="terminal-nav">
+      <div class="back-nav">
+        
+          <a href="/journal/" class="back-link">../</a>
+        
+      </div>
+    </div>
+  
+</main>
+    <footer role="contentinfo"></footer>
+  </body>
+</html>

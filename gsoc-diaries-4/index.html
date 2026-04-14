@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<title>
+  GSoC Diaries #4: New Arguments and Error Plots | Behram Ulukır
+</title>
+ 
+<link rel="canonical" href="https://behramulukir.github.io/gsoc-diaries-4/" />
+
+
+<meta property="og:title" content="GSoC Diaries #4: New Arguments and Error Plots" />
+
+<meta
+  property="og:type"
+  content="article"
+/>
+<meta property="og:url" content="https://behramulukir.github.io/gsoc-diaries-4/" />
+ 
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="GSoC Diaries #4: New Arguments and Error Plots" />
+      
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GSoC Diaries #4: New Arguments and Error Plots",
+    "url": "https:\/\/behramulukir.github.io\/gsoc-diaries-4\/",
+    "datePublished": "2025-07-11T21:32:17Z",
+    "dateModified": "2025-07-11T21:32:17Z"
+  }
+</script>
+  
+      <link rel="stylesheet" href="/css/main.min.2dde33969d4d5e378a33b00cb356d9d5b3b4ec0c6e8614348db13632ec0c1df4.css" integrity="sha256-Ld4zlp1NXjeKM7AMs1bZ1bO07AxuhhQ0jbE2MuwMHfQ=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/custom.min.c835eafcd0d85c7ef378c05dc7fecc867171adaa0b6293f202ba5aaec99847a6.css" integrity="sha256-yDXq/NDYXH7zeMBdx/7MhnFxraoLYpPyArparsmYR6Y=" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <header role="banner"><nav class="path-nav" aria-label="Breadcrumb">
+  <ol>
+    
+  
+    
+  
+    
+  
+  <li>
+    /
+    <a href="/">Behram Ulukır</a>
+    /
+  </li>
+
+  
+  <li>
+    
+    <a href="/journal/">Journal</a>
+    /
+  </li>
+
+  
+  <li class="current">
+    
+    <a href="/gsoc-diaries-4/">GSoC Diaries #4: New Arguments and Error Plots</a>
+    
+  </li>
+
+  </ol>
+</nav>
+
+
+
+</header>
+    <main id="main-content" role="main">
+  <h1>GSoC Diaries #4: New Arguments and Error Plots</h1>
+  
+  <div class="terms-list">
+    <ul>
+        <li><a href="/tags/bayes/">#Bayes</a></li>
+        <li><a href="/tags/google-summer-of-code/">#Google Summer of Code</a></li>
+        <li><a href="/tags/stan/">#Stan</a></li>
+    </ul>
+  </div>
+
+
+  
+  
+  
+  
+
+   
+   <p>Hey,</p>
+<p>In the <a
+
+		href = "/gsoc-diaries-3/"
+
+	
+
+	>
+	<span>
+		last blog post
+	</span>
+
+</a>, I talked about quantile dot plots and doing my first official PR on the repository. Since then, that PR required a few updates and took me a couple of more days to finalise. One of my favourite things about GSoC is how much I learn about software development that I wouldn&rsquo;t learn if it weren&rsquo;t an open-source focused programme. For example, a small but very important thing I missed while doing my first PR was compiling the documentation. I thought writing up the documentation would be enough, but apparently, I needed to compile it explicitly so that it actually shows up on the website. After getting feedback from my mentors to fix such little mistakes, I managed to finish up the PR, and since it has been merged to the main branch, I am waiting to be included in the next release of the package. Congratulations to me, I guess!</p>
+<p>As there are lots of things to implement as part of my project, I quickly started working on my next task. This time, I wanted to focus on another part of the bayesplot error/residual plots. In their paper, Säilynoja et al<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> highlighted the importance of residual plots that are robust in visualising both continuous and discrete data. So far, error plots in bayesplot are geared towards handling continuous data, which created a need for changes.</p>
+<p>There have been already talks about error plots and whether we need alternative approaches for them, so I created <a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/358"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		a new issue
+	</span>
+
+</a> to discuss those things, gathering two important tasks to implement: first, adding an optional <code>x</code> argument to <code>ppc_error_binned</code> function and second, implementing a new plot -possibly- named <code>ppc_residual</code> which would plot <code>y - stat(y_rep)</code> on the y-axis and <code>stat(y_rep)</code> on the x-axis. Currently, <code>ppc_error_*</code> functions are plotting <code>stat(_y - y_rep)</code> on the y-axis and <code>stat(y_rep)</code> on the x-axis. Our discussion led us to think that implementing the second task requires detailed thinking, especially regarding how we want to structure the package. For example, it is an important question whether we want to create a new family of functions for <code>ppc_residual_*</code> or include them in the <code>ppc_error_*</code> family. Since we haven&rsquo;t settled on this discussion, I decided to start working on something that I can implement right away: adding an optional <code>x</code> argument to the <code>ppc_error_binned</code> function.</p>
+<p>To be honest, this task has been fairly easier than implementing a whole new function from scratch. As there are already helper functions to use, the task for me is just to change a handful of lines, update the documentation, and implement new tests to make sure the new abilities of the function work as intended. Though the most important part of this task was not breaking anything, because in a package that has quite a lot of users, the last thing you would want is messing with functions that people might be utilising in production code.</p>
+<p>With a quick implementation phase, I managed to finish up the changes that were needed and created a <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/359"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		new PR
+	</span>
+
+</a> for them. This new code is passing all the tests, not breaking any existing code, and implementing the changes we needed just as described. Hopefully, this PR will quickly make its way to the main branch. I am quite happy with ramping up my shipping speed, and I hope to keep this up. I still haven&rsquo;t settled on what I should implement next, but let&rsquo;s keep it as a mystery for the next diary entry!</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a
+
+		href = "https://arxiv.org/abs/2503.01509"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		https://arxiv.org/abs/2503.01509
+	</span>
+
+</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+   <div class="time">
+     <time datetime="2025-07-11">2025-07-11&nbsp;</time>
+
+     
+     
+       <span class="reading-time"> · 3 min read</span>
+     
+     
+     
+   </div>
+
+  
+  
+    <div class="comments">
+
+</div>
+  
+
+  
+    <div class="terminal-nav">
+      <div class="back-nav">
+        
+          <a href="/journal/" class="back-link">../</a>
+        
+      </div>
+    </div>
+  
+</main>
+    <footer role="contentinfo"></footer>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<title>
+  GSoC Diaries #2: Starting with Dot Plots | Behram Ulukır
+</title>
+ 
+<link rel="canonical" href="https://behramulukir.github.io/gsoc-diaries-2/" />
+
+
+<meta property="og:title" content="GSoC Diaries #2: Starting with Dot Plots" />
+
+<meta
+  property="og:type"
+  content="article"
+/>
+<meta property="og:url" content="https://behramulukir.github.io/gsoc-diaries-2/" />
+ 
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="GSoC Diaries #2: Starting with Dot Plots" />
+      
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GSoC Diaries #2: Starting with Dot Plots",
+    "url": "https:\/\/behramulukir.github.io\/gsoc-diaries-2\/",
+    "datePublished": "2025-06-14T19:20:12Z",
+    "dateModified": "2025-06-14T19:20:12Z"
+  }
+</script>
+  
+      <link rel="stylesheet" href="/css/main.min.2dde33969d4d5e378a33b00cb356d9d5b3b4ec0c6e8614348db13632ec0c1df4.css" integrity="sha256-Ld4zlp1NXjeKM7AMs1bZ1bO07AxuhhQ0jbE2MuwMHfQ=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/custom.min.c835eafcd0d85c7ef378c05dc7fecc867171adaa0b6293f202ba5aaec99847a6.css" integrity="sha256-yDXq/NDYXH7zeMBdx/7MhnFxraoLYpPyArparsmYR6Y=" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <header role="banner"><nav class="path-nav" aria-label="Breadcrumb">
+  <ol>
+    
+  
+    
+  
+    
+  
+  <li>
+    /
+    <a href="/">Behram Ulukır</a>
+    /
+  </li>
+
+  
+  <li>
+    
+    <a href="/journal/">Journal</a>
+    /
+  </li>
+
+  
+  <li class="current">
+    
+    <a href="/gsoc-diaries-2/">GSoC Diaries #2: Starting with Dot Plots</a>
+    
+  </li>
+
+  </ol>
+</nav>
+
+
+
+</header>
+    <main id="main-content" role="main">
+  <h1>GSoC Diaries #2: Starting with Dot Plots</h1>
+  
+  <div class="terms-list">
+    <ul>
+        <li><a href="/tags/bayes/">#Bayes</a></li>
+        <li><a href="/tags/google-summer-of-code/">#Google Summer of Code</a></li>
+        <li><a href="/tags/stan/">#Stan</a></li>
+    </ul>
+  </div>
+
+
+  
+  
+  
+  
+
+   
+   <p>Hey,</p>
+<p>It has been two weeks since I wrote the previous journal entry, which was aimed at concluding the community bonding period and starting the coding period. The coding period has been underway since the beginning of this month, and I wanted to give an update about my progress so far, as I promised.</p>
+<p>I&rsquo;ll start by confessing one thing: the coding period has started fairly slowly for me. Unfortunately, my final exams -which I had 3 of them- spanned from June 2 to June 6, pretty much blocking my chances to do any significant coding for that week. Don&rsquo;t get me wrong, though, I have done stuff. We already had a GitHub project as our project management tab, and I spent my free time looking at the task items there, organising and editing them.</p>
+<p>Things took off more in the second week, though. When I got freed from the school work, I had so much time to dedicate to Google Summer of Code, which I happily did. We had an initial meeting to discuss which task item I should start working on, and decided that quantile dot plots are the best option, as we anticipated that they should be rather similar in implementation compared to other graphing options we have, such as histograms or density plots. To implement this, I had two options to choose from:</p>
+<ul>
+<li><code>ggplot2::geom_dotplot()</code></li>
+<li><code>ggdist:stat_dots()</code></li>
+</ul>
+<p>Just by looking at those functions, it was clear that <code>ggdist::stat_dots()</code> is simply the superior function when it comes to plotting dots on Cartesian axes, since it gives the option to plot only certain quantiles of the data. Even though it was dependent on the <code>ggplot::geom_dotplot()</code>, it has some very remarkable upgrades and a few extra customisation opportunities over the bare <code>ggplot::geom_dotplot()</code> function, which was the second option.</p>
+<p>However, software development is never just about picking the most advanced method. If the more basic method is enough for the purposes of the project, then it&rsquo;s likely to be a better fit since advanced capabilities often come with extra maintenance tasks. Therefore, I decided to examine both of the functions well enough and made my decision in an informed way.</p>
+<p>This is not the only thing we discussed in the meeting, of course. We also discussed a lot about the testing of newly implemented functions. Testing functions that return visual objects is slightly different from testing functions that return easily comparable items. For that reason, bayesplot has a testing approach that saves the image files and compares them to see what the changes are from the previous version of the function to the next version. Bayesplot doesn&rsquo;t employ a strict test-driven development; however, it was among the topics that we discussed. We also agreed about some practicalities and made sure how we want to run things moving forward, such as me being responsible for calling the meetings when I need them and Teemu being the first responsible for the project.</p>
+<p>The first two weeks weren&rsquo;t as productive as I would have wished due to school and exams; however, I am happy with the progress I have made, especially in the last week. In the next two weeks, my goal is to dedicate most of my time to implementing the dot plot function with proper testing and documentation.</p>
+<p>See you in the next entry of GSoC diaries!</p>
+
+   <div class="time">
+     <time datetime="2025-06-14">2025-06-14&nbsp;</time>
+
+     
+     
+       <span class="reading-time"> · 3 min read</span>
+     
+     
+     
+   </div>
+
+  
+  
+    <div class="comments">
+
+</div>
+  
+
+  
+    <div class="terminal-nav">
+      <div class="back-nav">
+        
+          <a href="/journal/" class="back-link">../</a>
+        
+      </div>
+    </div>
+  
+</main>
+    <footer role="contentinfo"></footer>
+  </body>
+</html>

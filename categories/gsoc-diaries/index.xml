@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GSoC Diaries on Behram Ulukır</title>
+    <link>https://behramulukir.github.io/categories/gsoc-diaries/</link>
+    <description>Recent content in GSoC Diaries on Behram Ulukır</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 Aug 2025 16:08:22 +0000</lastBuildDate>
+    <atom:link href="https://behramulukir.github.io/categories/gsoc-diaries/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSoC Diaries #8: Final Evaluation</title>
+      <link>https://behramulukir.github.io/gsoc-diaries-8/</link>
+      <pubDate>Sun, 31 Aug 2025 16:08:22 +0000</pubDate>
+      <guid>https://behramulukir.github.io/gsoc-diaries-8/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;It was just a couple of months ago, on May 14, when I received an email asking if I still would be interested in working on Stan through the summer as part of Google Summer of Code, as I initially didn&amp;rsquo;t receive the funding. I said yes, and since then, my time has been full of learning, experimenting, and implementing. Working on &lt;code&gt;bayesplot&lt;/code&gt; was so much fun, which I plan to keep doing so even after Google Summer of Code, but now, it is time to close the chapter of GSoC formally.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GSoC Diaries #7: Code Refactoring</title>
+      <link>https://behramulukir.github.io/gsoc-diaries-7/</link>
+      <pubDate>Tue, 26 Aug 2025 10:42:48 +0000</pubDate>
+      <guid>https://behramulukir.github.io/gsoc-diaries-7/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;Sometimes you make some plans; however, life has some other plans. I believe that code refactoring is a canonical event for every developer and for every software package. Sometimes it is a complete overhaul, and sometimes it is just about rewriting a single function, like I did over the last two weeks. Just as I thought I am done with adding the new &lt;code&gt;discrete&lt;/code&gt; style to &lt;code&gt;ppc_rootogram&lt;/code&gt;, I was -reasonably- told that code I wrote is fairly messy and would be much easier to maintain if I refactor it, split it into two different functions and move data processing to this newly created internal function and change the logic of how visuals are drawn based on the arguments that user passed to the function. It made complete sense, to be honest. I am not going to be around all the time, and if the functionality that I added would create extra problems in the future, that&amp;rsquo;s a big issue. Therefore, I got to work and started refactoring the &lt;code&gt;ppc_rootogram&lt;/code&gt;, effectively writing it from the ground up.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GSoC Diaries #6: New Rootogram Style</title>
+      <link>https://behramulukir.github.io/gsoc-diaries-6/</link>
+      <pubDate>Mon, 11 Aug 2025 17:13:00 +0000</pubDate>
+      <guid>https://behramulukir.github.io/gsoc-diaries-6/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;In my &lt;a&#xA;&#xA;&#x9;&#x9;href = &#34;http://personal-website.local/?page_id=745&#34;&#xA;&#xA;&#x9;&#xA;&#xA;&#x9;&#xA;&#x9;&#x9;target = &#34;_blank&#34;&#xA;&#x9;&#x9;rel = &#34;nofollow noopener noreferrer&#34;&#xA;&#xA;&#x9;&gt;&#xA;&#x9;&lt;span&gt;&#xA;&#x9;&#x9;last blog post&#xA;&#x9;&lt;/span&gt;&#xA;&#xA;&lt;/a&gt;, I talked about rootograms and the new rootogram style that is proposed by Säilynoja et al&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. This new rootogram style puts more emphasis on the discrete nature of count data compared to other rootogram styles. It does this by using discrete visual elements such as point ranges and points instead of lines and filled areas. It also visually looks good and is very compatible with the general plot style followed in bayesplot. In the past two weeks, I have managed to take this idea to a complete implementation and finalised my PR about it, as I promised myself in the last blog post: &lt;a&#xA;&#xA;&#x9;&#x9;href = &#34;https://github.com/stan-dev/bayesplot/pull/362&#34;&#xA;&#xA;&#x9;&#xA;&#xA;&#x9;&#xA;&#x9;&#x9;target = &#34;_blank&#34;&#xA;&#x9;&#x9;rel = &#34;nofollow noopener noreferrer&#34;&#xA;&#xA;&#x9;&gt;&#xA;&#x9;&lt;span&gt;&#xA;&#x9;&#x9;adding a discrete option to ppc_rootogram&#xA;&#x9;&lt;/span&gt;&#xA;&#xA;&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GSoC Diaries #5: A Week Off and Some Planning</title>
+      <link>https://behramulukir.github.io/gsoc-diaries-5/</link>
+      <pubDate>Sat, 26 Jul 2025 13:49:11 +0000</pubDate>
+      <guid>https://behramulukir.github.io/gsoc-diaries-5/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;In the &lt;a&#xA;&#xA;&#x9;&#x9;href = &#34;/gsoc-diaries-4/&#34;&#xA;&#xA;&#x9;&#xA;&#xA;&#x9;&gt;&#xA;&#x9;&lt;span&gt;&#xA;&#x9;&#x9;last blog post&#xA;&#x9;&lt;/span&gt;&#xA;&#xA;&lt;/a&gt;, I talked about the idea of working on residual plots and error plots and my decision to tackle the issue of the lack of an x argument as an optional covariate in the &lt;code&gt;ppc_error_binned&lt;/code&gt; function to quickly implement something. The implementation wasn&amp;rsquo;t very complicated, and I quickly created a PR about it, which was then merged to the master branch after a small update from one of my mentors and the maintainer of the bayesplot package, Jonah. Apparently, I forgot that there was a new way that we were using to label the x-axis, which I didn&amp;rsquo;t follow, so he updated the code to follow the same way, and it was good to go. Honestly, it felt so good that there wasn&amp;rsquo;t much work needed on that PR, especially because I was planning to take a week off to travel in the Nordics with my family and some of their friends. As a result of my spending a week wandering around Copenhagen -which I absolutely loved- and Stockholm -which I didn&amp;rsquo;t really like that much- I knew I wouldn&amp;rsquo;t be able to push any new code, so that PR about &lt;code&gt;ppc_error_binned&lt;/code&gt; going through smoothly upped my mood quite a bit.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GSoC Diaries #4: New Arguments and Error Plots</title>
+      <link>https://behramulukir.github.io/gsoc-diaries-4/</link>
+      <pubDate>Fri, 11 Jul 2025 21:32:17 +0000</pubDate>
+      <guid>https://behramulukir.github.io/gsoc-diaries-4/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;In the &lt;a&#xA;&#xA;&#x9;&#x9;href = &#34;/gsoc-diaries-3/&#34;&#xA;&#xA;&#x9;&#xA;&#xA;&#x9;&gt;&#xA;&#x9;&lt;span&gt;&#xA;&#x9;&#x9;last blog post&#xA;&#x9;&lt;/span&gt;&#xA;&#xA;&lt;/a&gt;, I talked about quantile dot plots and doing my first official PR on the repository. Since then, that PR required a few updates and took me a couple of more days to finalise. One of my favourite things about GSoC is how much I learn about software development that I wouldn&amp;rsquo;t learn if it weren&amp;rsquo;t an open-source focused programme. For example, a small but very important thing I missed while doing my first PR was compiling the documentation. I thought writing up the documentation would be enough, but apparently, I needed to compile it explicitly so that it actually shows up on the website. After getting feedback from my mentors to fix such little mistakes, I managed to finish up the PR, and since it has been merged to the main branch, I am waiting to be included in the next release of the package. Congratulations to me, I guess!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GSoC Diaries #3: First PR</title>
+      <link>https://behramulukir.github.io/gsoc-diaries-3/</link>
+      <pubDate>Sat, 28 Jun 2025 12:28:47 +0000</pubDate>
+      <guid>https://behramulukir.github.io/gsoc-diaries-3/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;In the &lt;a&#xA;&#xA;&#x9;&#x9;href = &#34;/gsoc-diaries-2/&#34;&#xA;&#xA;&#x9;&#xA;&#xA;&#x9;&gt;&#xA;&#x9;&lt;span&gt;&#xA;&#x9;&#x9;last blog post&#xA;&#x9;&lt;/span&gt;&#xA;&#xA;&lt;/a&gt;, I mentioned that I have been working on the dot plots. You know what, it was much more complicated than I anticipated. If you remember, I told you that there are two options to use under-the-hood while implementing dot plots for bayesplot, &lt;code&gt;geom_dotplot&lt;/code&gt; and &lt;code&gt;stat_dots&lt;/code&gt;. While the former one offers a simple solution for the feature that I was trying to implement, the latter one has more advanced capabilities at the expense of adding new dependencies to the package. I didn&amp;rsquo;t want that. I was confident that I would be able to implement what &lt;code&gt;stat_dots&lt;/code&gt; offers by tweaking &lt;code&gt;geom_dotplot&lt;/code&gt;. A fault confessed is half redressed. After spending a significant amount of time implementing auto-sizing dots and stack ratio of dot plots by finding the number of the tallest line, I realised that I would need more work than just tweaking the &lt;code&gt;geom_dotplot&lt;/code&gt;. I would need to implement a whole new &lt;code&gt;geom&lt;/code&gt; and simply build what &lt;code&gt;stat_dots&lt;/code&gt; offers from scratch. After consulting with Jonah, Aki, and Teemu, I have decided that using &lt;code&gt;stat_dots&lt;/code&gt; is the better way to go.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GSoC Diaries #2: Starting with Dot Plots</title>
+      <link>https://behramulukir.github.io/gsoc-diaries-2/</link>
+      <pubDate>Sat, 14 Jun 2025 19:20:12 +0000</pubDate>
+      <guid>https://behramulukir.github.io/gsoc-diaries-2/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;It has been two weeks since I wrote the previous journal entry, which was aimed at concluding the community bonding period and starting the coding period. The coding period has been underway since the beginning of this month, and I wanted to give an update about my progress so far, as I promised.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ll start by confessing one thing: the coding period has started fairly slowly for me. Unfortunately, my final exams -which I had 3 of them- spanned from June 2 to June 6, pretty much blocking my chances to do any significant coding for that week. Don&amp;rsquo;t get me wrong, though, I have done stuff. We already had a GitHub project as our project management tab, and I spent my free time looking at the task items there, organising and editing them.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GSoC Diaries #1: Introduction</title>
+      <link>https://behramulukir.github.io/gsoc-diaries-1/</link>
+      <pubDate>Fri, 30 May 2025 09:14:25 +0000</pubDate>
+      <guid>https://behramulukir.github.io/gsoc-diaries-1/</guid>
+      <description>&lt;p&gt;Hey,&lt;/p&gt;&#xA;&lt;p&gt;One of the things that I became aware of when I was contacted by Aki to see if I am still interested in working on bayesplot as part of Google Summer of Code was that I needed to write regular diaries to document my journey. As I always think a little too much when it comes to how polished things look and how well they are organised, I decided to overhaul my personal website so that I can host a blog on it, which I will be writing biweekly starting from today. After working on it to find a good-looking template and make sure everything looks clean, I can finally start my Google Summer of Code journey with my first diary entry!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
