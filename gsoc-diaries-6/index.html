@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<title>
+  GSoC Diaries #6: New Rootogram Style | Behram Ulukır
+</title>
+ 
+<link rel="canonical" href="https://behramulukir.github.io/gsoc-diaries-6/" />
+
+
+<meta property="og:title" content="GSoC Diaries #6: New Rootogram Style" />
+
+<meta
+  property="og:type"
+  content="article"
+/>
+<meta property="og:url" content="https://behramulukir.github.io/gsoc-diaries-6/" />
+ 
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="GSoC Diaries #6: New Rootogram Style" />
+      
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GSoC Diaries #6: New Rootogram Style",
+    "url": "https:\/\/behramulukir.github.io\/gsoc-diaries-6\/",
+    "datePublished": "2025-08-11T17:13:00Z",
+    "dateModified": "2025-08-11T17:13:00Z"
+  }
+</script>
+  
+      <link rel="stylesheet" href="/css/main.min.2dde33969d4d5e378a33b00cb356d9d5b3b4ec0c6e8614348db13632ec0c1df4.css" integrity="sha256-Ld4zlp1NXjeKM7AMs1bZ1bO07AxuhhQ0jbE2MuwMHfQ=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/custom.min.c835eafcd0d85c7ef378c05dc7fecc867171adaa0b6293f202ba5aaec99847a6.css" integrity="sha256-yDXq/NDYXH7zeMBdx/7MhnFxraoLYpPyArparsmYR6Y=" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <header role="banner"><nav class="path-nav" aria-label="Breadcrumb">
+  <ol>
+    
+  
+    
+  
+    
+  
+  <li>
+    /
+    <a href="/">Behram Ulukır</a>
+    /
+  </li>
+
+  
+  <li>
+    
+    <a href="/journal/">Journal</a>
+    /
+  </li>
+
+  
+  <li class="current">
+    
+    <a href="/gsoc-diaries-6/">GSoC Diaries #6: New Rootogram Style</a>
+    
+  </li>
+
+  </ol>
+</nav>
+
+
+
+</header>
+    <main id="main-content" role="main">
+  <h1>GSoC Diaries #6: New Rootogram Style</h1>
+  
+  <div class="terms-list">
+    <ul>
+        <li><a href="/tags/bayes/">#Bayes</a></li>
+        <li><a href="/tags/google-summer-of-code/">#Google Summer of Code</a></li>
+        <li><a href="/tags/stan/">#Stan</a></li>
+    </ul>
+  </div>
+
+
+  
+  
+  
+  
+
+   
+   <p>Hey,</p>
+<p>In my <a
+
+		href = "http://personal-website.local/?page_id=745"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		last blog post
+	</span>
+
+</a>, I talked about rootograms and the new rootogram style that is proposed by Säilynoja et al<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. This new rootogram style puts more emphasis on the discrete nature of count data compared to other rootogram styles. It does this by using discrete visual elements such as point ranges and points instead of lines and filled areas. It also visually looks good and is very compatible with the general plot style followed in bayesplot. In the past two weeks, I have managed to take this idea to a complete implementation and finalised my PR about it, as I promised myself in the last blog post: <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/362"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		adding a discrete option to ppc_rootogram
+	</span>
+
+</a>.</p>
+<p>The last two weeks were very hectic for me, mainly due to my personal life but also partly because this discrete rootogram required more in-depth thinking than I anticipated. To begin with, I had to travel to Turkey for a couple of days for an Australian visa application, which unfortunately cannot be filled out in Finland, mostly because Finnish people are not required to get a visa to travel to Australia. That made me travel to Turkey for a visa appointment that took only an hour or so. Since I didn&rsquo;t want to stop working, I tried to work on my way there, at the airport, while staying at my family&rsquo;s house, and so on. Naturally, these weren&rsquo;t the most efficient and productive working hours. I am not even mentioning the very deep pain that I had in my right leg that made me unable to sleep, which is now getting better after I had a doctor&rsquo;s appointment, received exercise instructions to follow and some medication to take. As a combined result of all these things, I wasn&rsquo;t very productive, but I am glad that I managed to complete rootograms and made them ready to be merged to the main branch.</p>
+<p>Like I said, the hectic part was mostly about my personal life, but it was also partly related to the rootograms. It turned out that to correctly add a discrete style to a rootogram, there were lots of minor things I needed to consider. For example, in the version proposed in the articles, Teemu opted to use colours as indicators of whether observations lay within the bounds of posterior samples. This is a good idea, which looks nice visually, but it is not compatible with bayesplot. In bayesplot, users are free to pick from colour schemes whose different shades are used to colour different visual elements of the plot. That made having two completely different colours for such a distinction impossible. I also didn&rsquo;t consider different shades of the same colour to be easy enough to tell apart from each other to be used in such a context. Therefore, we decided to move on with using different shapes as our indicators. Then came the question of which shapes to use. After long discussions, I settled on using squares for within bounds and rhombuses for out-of-bounds points. That being said, I also implemented a new argument called <code>bound_distinct</code>, which is set to true by default and used to control whether the user wants such an indication of within/out of bound points based on the <a
+
+		href = "https://github.com/stan-dev/bayesplot/pull/362#issuecomment-3143677841"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		suggestion of Osvaldo A. Martin
+	</span>
+
+</a>. When <code>bound_distinct</code> is set to false, all observation points are visualised by squares. This was not the only point of discussion, though. Like I said, in bayesplot, users pick a colour scheme which is then used to colour the plot accordingly. However, it is not always crystal clear how to assign different shades to different parts of the plot. In other rootogram styles, lighter shades are used for observed points while darker shades are used for sampled points. This convention, in my opinion, didn&rsquo;t make much sense to follow in a discrete style since it is harder to distinguish lighter points laid on top of darker lines. In addition to that, in <code>ppc_interval</code>, which uses point ranges, lighter shades are used for sampled points and darker shades are used for observed points. After a bit of discussion, we decided that this is the logical way to consider the visuality of both options, as well as the fact that we are considering deprecating other rootogram styles after some time, therefore it&rsquo;s not very sensible to follow their colouring convention. The final part of our discussions was whether to use the median or the mean to determine the centre point of the sampled points. In other rootogram styles, the mean is used to determine the centre, while bounds are based on the quantiles. However, this turned out to be a problematic choice in the context of a discrete style. As we have a style that visualises points discretely and distinguishes whether they lie within bounds or not, we had cases where the observed point is at 0, which is the same as the upper and lower quantiles, but the mean is at 0.04. This meant that the observed point was marked to be within the bounds despite the fact that there weren&rsquo;t any visual bounds, and the observed point wasn&rsquo;t on top of the centre point either. It also meant that the centre of our sampled points was out of the bounds, which didn&rsquo;t make much sense either. Based on these, we decided to use the median to determine centre points. However, we didn&rsquo;t touch other rootogram styles, and in the documentation and labels of plots, we made it clear that this design choice only applies to the discrete style.</p>
+<p>There were lots of discussions and lots of design decisions to be taken; however, finally, the discrete rootograms are ready to be used! My work in the last two weeks, though, wasn&rsquo;t limited to this. I did a bit of admin work that we discussed before to create a master issue to gather all simple, easy-to-fix issues that can be implemented by people who are new to bayesplot and open source development, which would serve as a soft entry to the world of bayesplot. Under this master issue, I gathered various small sub-issues that newcomers might want to have a look at and pick one to do their first PR: <a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/365"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Good First Issues for New Contributors
+	</span>
+
+</a>.</p>
+<p>In the upcoming weeks, I want to focus more on residual plots. My first goal is to combine <code>ppc_residual_scatter_error_avg</code> and <code>ppc_residual_scatter_error_avg_vs_x</code> to reduce the number of highly similar functions. Then, I plan to move on to the implementation of long-waiting <code>ppc_residual_scatter</code>. If I have time after doing all this, I&rsquo;ll probably move on to clean up some of the old issues and do some quick PRs. It has been a hectic two weeks; I wish the next two would be at least a little bit calmer.</p>
+<p>See you in the next blog post!</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a
+
+		href = "https://arxiv.org/abs/2503.01509"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		https://arxiv.org/abs/2503.01509
+	</span>
+
+</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+   <div class="time">
+     <time datetime="2025-08-11">2025-08-11&nbsp;</time>
+
+     
+     
+       <span class="reading-time"> · 6 min read</span>
+     
+     
+     
+   </div>
+
+  
+  
+    <div class="comments">
+
+</div>
+  
+
+  
+    <div class="terminal-nav">
+      <div class="back-nav">
+        
+          <a href="/journal/" class="back-link">../</a>
+        
+      </div>
+    </div>
+  
+</main>
+    <footer role="contentinfo"></footer>
+  </body>
+</html>

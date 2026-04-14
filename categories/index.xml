@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Behram Ulukır</title>
+    <link>https://behramulukir.github.io/categories/</link>
+    <description>Recent content in Categories on Behram Ulukır</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 Aug 2025 16:08:22 +0000</lastBuildDate>
+    <atom:link href="https://behramulukir.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSoC Diaries</title>
+      <link>https://behramulukir.github.io/categories/gsoc-diaries/</link>
+      <pubDate>Sun, 31 Aug 2025 16:08:22 +0000</pubDate>
+      <guid>https://behramulukir.github.io/categories/gsoc-diaries/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

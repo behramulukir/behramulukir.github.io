@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<title>
+  GSoC Diaries #5: A Week Off and Some Planning | Behram Ulukır
+</title>
+ 
+<link rel="canonical" href="https://behramulukir.github.io/gsoc-diaries-5/" />
+
+
+<meta property="og:title" content="GSoC Diaries #5: A Week Off and Some Planning" />
+
+<meta
+  property="og:type"
+  content="article"
+/>
+<meta property="og:url" content="https://behramulukir.github.io/gsoc-diaries-5/" />
+ 
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="GSoC Diaries #5: A Week Off and Some Planning" />
+      
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GSoC Diaries #5: A Week Off and Some Planning",
+    "url": "https:\/\/behramulukir.github.io\/gsoc-diaries-5\/",
+    "datePublished": "2025-07-26T13:49:11Z",
+    "dateModified": "2025-07-26T13:49:11Z"
+  }
+</script>
+  
+      <link rel="stylesheet" href="/css/main.min.2dde33969d4d5e378a33b00cb356d9d5b3b4ec0c6e8614348db13632ec0c1df4.css" integrity="sha256-Ld4zlp1NXjeKM7AMs1bZ1bO07AxuhhQ0jbE2MuwMHfQ=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/custom.min.c835eafcd0d85c7ef378c05dc7fecc867171adaa0b6293f202ba5aaec99847a6.css" integrity="sha256-yDXq/NDYXH7zeMBdx/7MhnFxraoLYpPyArparsmYR6Y=" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <header role="banner"><nav class="path-nav" aria-label="Breadcrumb">
+  <ol>
+    
+  
+    
+  
+    
+  
+  <li>
+    /
+    <a href="/">Behram Ulukır</a>
+    /
+  </li>
+
+  
+  <li>
+    
+    <a href="/journal/">Journal</a>
+    /
+  </li>
+
+  
+  <li class="current">
+    
+    <a href="/gsoc-diaries-5/">GSoC Diaries #5: A Week Off and Some Planning</a>
+    
+  </li>
+
+  </ol>
+</nav>
+
+
+
+</header>
+    <main id="main-content" role="main">
+  <h1>GSoC Diaries #5: A Week Off and Some Planning</h1>
+  
+  <div class="terms-list">
+    <ul>
+        <li><a href="/tags/bayes/">#Bayes</a></li>
+        <li><a href="/tags/google-summer-of-code/">#Google Summer of Code</a></li>
+        <li><a href="/tags/stan/">#Stan</a></li>
+    </ul>
+  </div>
+
+
+  
+  
+  
+  
+
+   
+   <p>Hey,</p>
+<p>In the <a
+
+		href = "/gsoc-diaries-4/"
+
+	
+
+	>
+	<span>
+		last blog post
+	</span>
+
+</a>, I talked about the idea of working on residual plots and error plots and my decision to tackle the issue of the lack of an x argument as an optional covariate in the <code>ppc_error_binned</code> function to quickly implement something. The implementation wasn&rsquo;t very complicated, and I quickly created a PR about it, which was then merged to the master branch after a small update from one of my mentors and the maintainer of the bayesplot package, Jonah. Apparently, I forgot that there was a new way that we were using to label the x-axis, which I didn&rsquo;t follow, so he updated the code to follow the same way, and it was good to go. Honestly, it felt so good that there wasn&rsquo;t much work needed on that PR, especially because I was planning to take a week off to travel in the Nordics with my family and some of their friends. As a result of my spending a week wandering around Copenhagen -which I absolutely loved- and Stockholm -which I didn&rsquo;t really like that much- I knew I wouldn&rsquo;t be able to push any new code, so that PR about <code>ppc_error_binned</code> going through smoothly upped my mood quite a bit.</p>
+<p>Getting back to work last Monday after a week off, I wasn&rsquo;t sure of what to do next. As I said before, second part of working with residual plots that I mentioned on <a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/358"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		my issue
+	</span>
+
+</a>, implementing a new plot -possibly- named <code>ppc_residual</code> which would plot <code>y - stat(y_rep)</code> on the y-axis and <code>stat(y_rep)</code> on the x-axis, required careful thinking and planning about how do we want to structure error plots and residual plots so that they make the most sense to users. As this was not something that I could decide on my own, I decided to call a meeting with my mentors Jonah, Aki, and Teemu to discuss this, and then we settled on Thursday as the meeting date.</p>
+<p>Since I didn&rsquo;t want to sit and do nothing in the meantime, I decided to pick up another task that we put on our GitHub project and turned it into an issue: <a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/360"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		Emphasising discreteness of data in rootograms
+	</span>
+
+</a>. This was something that Säilynoja et al<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> proposed in <a
+
+		href = "https://teemusailynoja.github.io/visual-predictive-checks/"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		their preprint
+	</span>
+
+</a>, which simply meant adding an alternative look to rootograms so that their discreteness is more explicit than they are at the moment. This, in my opinion, was a fair point to raise because rootograms are designed to visualise discrete data points, while the visual items in rootograms were continuous, such as lines and fields that normally represent continuity. As this issue is separate from the residual plot discussions, it seemed like a nice new avenue for me to pursue while we are deciding on the fate of residual and error plots. Unfortunately, though, it appeared to be more complicated than I thought. Adding a completely new aesthetic option to an existing graph, especially one that is a little complicated, like the proposed rootogram, takes some time to get right. I made some progress; however, at the moment, it is not good enough to create a PR about it. My first goal for the next week is to finish up that implementation quickly so that it can get merged into the main branch soon.</p>
+<p>That is not all in this blog post, of course. As I told you, we had a meeting last Thursday to discuss how we want to shape error plots and residual plots and how we should group them. As they have a very similar logic behind them, it doesn&rsquo;t make much sense to have different documentation pages for them. At the same time, having many functions on the same page will also lead to cluttered documentation and confuse users. Therefore, we decided to start with a fresh, blank page. We wanted to gather all functionalities that we want to have regarding error and residual plots, and then go forward. So, I created <a
+
+		href = "https://github.com/stan-dev/bayesplot/issues/361"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		a new issue
+	</span>
+
+</a> to gather our and community members&rsquo; ideas about these types of plots. Then, we will see which of those desired functionalities we already have implementations for and which of those need new implementations. Then, we will transfer everything to a new documentation page and make a fresh start for error and residual plots. Of course, this will take quite some time and certainly will extend beyond my GSoC time; however, I am happy that we are taking steps forward, and I&rsquo;m glad that I&rsquo;m a part of this journey. I would like to stay around and contribute when we do those transitions, but for now, I have to focus on other things as part of the programme. What are those going to be except rootograms? You will hear in the next blog post!</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Säilynoja et al. (2025). Recommendations for visual predictive checks in Bayesian workflow. [Online]. Available: <a
+
+		href = "https://arxiv.org/abs/2503.01509"
+
+	
+
+	
+		target = "_blank"
+		rel = "nofollow noopener noreferrer"
+
+	>
+	<span>
+		https://arxiv.org/abs/2503.01509
+	</span>
+
+</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+   <div class="time">
+     <time datetime="2025-07-26">2025-07-26&nbsp;</time>
+
+     
+     
+       <span class="reading-time"> · 4 min read</span>
+     
+     
+     
+   </div>
+
+  
+  
+    <div class="comments">
+
+</div>
+  
+
+  
+    <div class="terminal-nav">
+      <div class="back-nav">
+        
+          <a href="/journal/" class="back-link">../</a>
+        
+      </div>
+    </div>
+  
+</main>
+    <footer role="contentinfo"></footer>
+  </body>
+</html>
